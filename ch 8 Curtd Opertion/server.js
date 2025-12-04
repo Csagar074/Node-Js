@@ -6,47 +6,49 @@ const app = express();
 let allUsers = [
     {
         Id: "201",
-        Name: "sagar chavda",
+        Name: "Sagar Chavda",
         Email: "sagarchavda963@gmail.com",
-        Password: "sagar@0721",
+        Password: "Sagar@721",
         Phone: 9624459963,
         Address: "Surat , Gujarat",
     },
     {
         Id: "202",
-        Name: "savan Ladva",
-        Email: "savanl74@gmail.com",
-        Password: "savan@441",
-        Phone: 515585486,
-        Address: "Mumbai , Maharastra",
+        Name: "Dhruvin vala",
+        Email: "dr22@gmail.com",
+        Password: "dhruvin@123",
+        Phone: 9776545811,
+        Address: "Mahuva ,Bhavnagar",
     },
     {
         Id: "203",
-        Name: "shrushti vala",
-        Email: "sjvala14@gmail.com",
-        Password: "shrushti@123",
-        Phone: 9627658246,
-        Address: "Mubai ,Maharastra",
+        Name: "Darshan Parmar",
+        Email: "dharshan14@gmail.com",
+        Password: "Dp27@123",
+        Phone: 9276847417,
+        Address: "Rajula, bhavnagar",
     },
     {
         Id: "204",
-        Name: "Dhruvin kavad",
-        Email: "dhruvin@gmail.com",
-        Password: "ddkavad@744",
-        Phone: 9724622578,
-        Address: "Mahuva, Bhavnagar",
+        Name: "savan ladva",
+        Email: "savan99@gmail.com",
+        Password: "Savan@123",
+        Phone: 9909451987,
+        Address: "Mumbai,Maharasth",
     },
     {
         Id: "205",
-        Name: "sharad Gediya",
-        Email: "sharadgediya@gmail.com",
-        Password: "sgediya@844",
-        Phone: 9425556788,
-        Address: "Varjevilla, Motavaracha",
+        Name: "Ronak Solanki",
+        Email: "ronaks444@gmail.com",
+        Password: "Ronak125@12",
+        Phone: 9265612346,
+        Address: "Ahemdabad,gujarat",
     },
 ]
 
 app.set("view engine", "ejs");
+app.use(express.urlencoded());
+
 app.get('/', (req, res) => {
     res.render('home', {
         name: "Sagar",
@@ -55,10 +57,23 @@ app.get('/', (req, res) => {
     });
 })
 
+let id = 206;
+app.post('/addUser', (req, res) => {
+    const user = req.body;
+
+    user.Id = id;
+    id++;
+    console.log(req.query)
+    console.log(user)
+
+    allUsers.push(user);
+    res.redirect('/');
+})
+
 app.listen(PORT, (err) => {
     if (err) {
-        console.log("Server is Not started.....", err);
+        console.log("Server is Not started....", err);
         return false;
     }
-    console.log("Server is started.... ");
+    console.log("Sever is started......");
 })

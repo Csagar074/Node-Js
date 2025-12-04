@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blog</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:"Poppins", sans-serif;
+            background: linear-gradient(135deg, #ff00b7, #6b00ff);
+            min-height:100vh;
+            padding-bottom:40px;
+        }
+
+        /* NAVBAR */
+        nav{
+            position:sticky;
+            top:0;
+            width:100%;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            text-align:center;
+            padding:15px 0;
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        nav a{
+            margin:20px;
+            color:#fff;
+            text-decoration:none;
+            font-weight:600;
+            font-size:18px;
+            transition:0.3s;
+        }
+
+        nav a:hover{
+            color:#ffe600;
+        }
+
+        /* HEADER TITLE */
+        h1{
+            text-align:center;
+            color:white;
+            font-size:50px;
+            font-weight:800;
+            margin-top:50px;
+            text-shadow:0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .blog-container{
+            width:85%;
+            margin:auto;
+            margin-top:40px;
+        }
+
+        /* BLOG CARD */
+        .blog-card{
+            background: rgba(255,255,255,0.4);
+            backdrop-filter: blur(15px);
+            padding:30px;
+            margin:25px 0;
+            border-radius:20px;
+            box-shadow:0px 20px 50px rgba(0,0,0,0.15);
+            transition:0.4s ease;
+            cursor:pointer;
+        }
+
+        .blog-card:hover{
+            transform:translateY(-10px);
+            box-shadow:0px 30px 60px rgba(0,0,0,0.25);
+        }
+
+        .blog-card h2{
+            font-size:28px;
+            color:#fff;
+            font-weight:700;
+        }
+
+        .blog-card p{
+            font-size:18px;
+            line-height:1.8;
+            margin-top:10px;
+            color:#f5f5f5;
+        }
+
+        /* BUTTON */
+        .read-btn{
+            background:#ffe600;
+            color:black;
+            padding:12px 20px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+            font-weight:600;
+            margin-top:15px;
+            transition:0.3s ease;
+        }
+
+        .read-btn:hover{
+            background:black;
+            color:#ffe600;
+            box-shadow:0 0 15px #ffe600;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:768px){
+            .blog-card h2{
+                font-size:22px;
+            }
+            .read-btn{
+                width:100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index">Home</a>
+        <a href="about">About</a>
+        <a href="blog">Blog</a>
+        <a href="contact">Contact</a>
+    </nav>
+
+    <h1>Latest Blogs</h1>
+
+    <div class="blog-container">
+
+        <div class="blog-card">
+            <h2> How to Learn Web Development?</h2>
+            <p>
+                Web development 2025 me ek trending skill hai. HTML, CSS, JavaScript ke baad React aur backend me Node.js ka boom hai.
+            </p>
+            <button class="read-btn">Read More</button>
+        </div>
+
+        <div class="blog-card">
+            <h2>Top 5 Programming Languages</h2>
+            <p>
+                JavaScript, Python, Java, C++ aur Go abhi high demand me hai. AI aur ML ke liye Python sabse strong option hai.
+            </p>
+            <button class="read-btn">Read More</button>
+        </div>
+
+        <div class="blog-card">
+            <h2>Why Coding is Important in 2025?</h2>
+            <p>
+                Technology fastest grow ho rahi hai aur har dusra business ko AI, Website aur Software ki zarurat hai.
+            </p>
+            <button class="read-btn">Read More</button>
+        </div>
+
+    </div>
+
+</body>
+</html>

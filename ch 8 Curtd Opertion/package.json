@@ -1,0 +1,19 @@
+{
+  "name": "ch-8-curtd-opertion",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node start"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "i": "^0.3.7",
+    "nodemon": "^3.1.11",
+    "uninstall": "^0.0.0"
+  }
+}

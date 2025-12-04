@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Not Found</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #001F64, #0052CC, #00A3FF);
+            color:white;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            overflow:hidden;
+        }
+
+        /* Floating Background Circles */
+        .circle{
+            position:absolute;
+            width:250px;
+            height:250px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.15);
+            animation: float 6s infinite ease-in-out alternate;
+        }
+
+        .circle:nth-child(2){
+            width:350px;
+            height:350px;
+            bottom:0;
+            right:0;
+            animation-duration:8s;
+        }
+
+        @keyframes float{
+            0% { transform:translateY(0px); }
+            100% { transform:translateY(-40px); }
+        }
+
+        /* Main Box */
+        .container{
+            text-align:center;
+            padding:40px;
+            background:rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius:20px;
+            width:400px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.3);
+            z-index:10;
+        }
+
+        h1{
+            font-size:80px;
+            font-weight:800;
+            margin-bottom:10px;
+            color:#00D9FF;
+        }
+
+        p{
+            opacity:0.8;
+            margin-bottom:20px;
+        }
+
+        /* Navigation */
+        ul{
+            list-style:none;
+            padding:0;
+            margin-top:20px;
+        }
+
+        ul li{
+            margin:10px 0;
+        }
+
+        a{
+            text-decoration:none;
+            font-size:20px;
+            font-weight:500;
+            color:white;
+            transition:0.3s;
+        }
+
+        a:hover{
+            color:#00D9FF;
+            letter-spacing:2px;
+        }
+
+        /* Button */
+        .btn{
+            display:inline-block;
+            margin-top:20px;
+            background:#00D9FF;
+            padding:12px 30px;
+            border-radius:30px;
+            color:black;
+            font-weight:600;
+            transition:.3s;
+        }
+
+        .btn:hover{
+            transform:scale(1.1);
+            background:white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Background circles -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <div class="container">
+        <h1>404</h1>
+        <p>Oops! The page you're looking for doesn't exist.</p>
+
+        <ul>
+            <li><a href="/">🏠 Home</a></li>
+            <li><a href="/about">ℹ About</a></li>
+            <li><a href="/blog">📝 Blog</a></li>
+            <li><a href="/contect">📞 Contact</a></li>
+        </ul>
+
+        <a href="/" class="btn">Go Home</a>
+    </div>
+
+</body>
+</html>

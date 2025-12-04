@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #d2d8f6, #b7cffb, #86a8e7);
+            color: #1b1b1b;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255,255,255,.2);
+            z-index: 999;
+        }
+
+        nav .logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: #00379f;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #ffffff;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00379f;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 160px 20px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            font-weight: 800;
+            animation: fadeDown 1.4s ease-out;
+        }
+
+        @keyframes fadeDown {
+            0% {opacity:0; transform: translateY(-40px);}
+            100% {opacity:1; transform: translateY(0);}
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 750px;
+            margin: 20px auto;
+            opacity: .85;
+            animation: fadeUp 1.8s ease-out;
+        }
+
+        @keyframes fadeUp {
+            0% {opacity:0; transform: translateY(40px);}
+            100% {opacity:1; transform: translateY(0);}
+        }
+
+        .btn {
+            padding: 16px 45px;
+            margin-top: 30px;
+            background: #00379f;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: 0.4s;
+            display: inline-block;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background: #001d59;
+        }
+
+        /* Features */
+        .features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 100px 20px;
+        }
+
+        .box {
+            width: 320px;
+            padding: 40px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            color: black;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            text-align: center;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        .box:hover {
+            transform: translateY(-15px);
+            backdrop-filter: blur(30px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .box h3 {
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .box p {
+            color: #2f2f2f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 50px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media(max-width:900px){
+            nav{padding:20px 30px;}
+            .hero h1{font-size:48px;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">META UI</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>Future of Web Design</h1>
+        <p>Experience a futuristic, glass-effect UI with smooth animations and next-gen design—built for speed, clarity, and perfection.</p>
+        <a href="#" class="btn">Get Started</a>
+    </div>
+
+    <div class="features">
+        <div class="box">
+            <h3>⚡ Super Fast</h3>
+            <p>Built with performance and lightweight structure.</p>
+        </div>
+        <div class="box">
+            <h3>✨ Elegant UI</h3>
+            <p>Inspired from Meta, Apple & Modern systems.</p>
+        </div>
+        <div class="box">
+            <h3>📱 100% Responsive</h3>
+            <p>Beautiful experience on every screen size.</p>
+        </div>
+    </div>
+
+    <footer>© 2024 Meta Style UI – Designed With ❤️</footer>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact – Meta UI Pro</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:"Poppins", sans-serif;
+            background:linear-gradient(135deg,#2b2bef,#9430ff,#ff00c8);
+            background-size: 200% 200%;
+            animation:bgMove 6s infinite alternate;
+            color:#fff;
+        }
+
+        @keyframes bgMove{
+            0%{background-position:left;}
+            100%{background-position:right;}
+        }
+
+        /* NAV */
+        nav{
+            background: rgba(255,255,255,0.15);
+            padding:18px 0;
+            text-align:center;
+            backdrop-filter:blur(15px);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+
+        nav a{
+            margin:20px;
+            text-decoration:none;
+            color:white;
+            font-weight:600;
+            font-size:18px;
+            transition:0.3s;
+        }
+
+        nav a:hover{
+            color:#ffe500;
+        }
+
+        /* HEADER */
+        .header{
+            text-align:center;
+            margin-top:60px;
+        }
+
+        .header h1{
+            font-size:55px;
+            letter-spacing:2px;
+            font-weight:800;
+        }
+
+        .header p{
+            font-size:20px;
+            margin-top:8px;
+            opacity:0.9;
+        }
+
+        /* CONTACT CONTAINER */
+        .contact-area{
+            display:flex;
+            justify-content:center;
+            align-items:flex-start;
+            gap:50px;
+            flex-wrap:wrap;
+            margin:80px auto;
+            width:85%;
+        }
+
+        /* GLASS BOXES */
+        .box{
+            background:rgba(255,255,255,0.15);
+            backdrop-filter:blur(15px);
+            padding:35px;
+            border-radius:20px;
+            width:420px;
+            box-shadow:0px 15px 40px rgba(0,0,0,0.2);
+            animation:float 3s infinite ease-in-out;
+        }
+
+        @keyframes float{
+            0%{transform:translateY(0);}
+            50%{transform:translateY(-8px);}
+            100%{transform:translateY(0);}
+        }
+
+        .box h2{
+            font-size:30px;
+            margin-bottom:20px;
+        }
+
+        .input-field{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            margin-bottom:16px;
+            font-size:16px;
+            outline:none;
+            transition:.3s;
+        }
+
+        .input-field:focus{
+            box-shadow:0px 0px 15px #ffe500;
+        }
+
+        textarea{
+            height:130px;
+            resize:none;
+        }
+
+        /* BUTTON */
+        .btn{
+            width:100%;
+            background:#ffe500;
+            padding:15px;
+            border:none;
+            border-radius:10px;
+            font-size:18px;
+            cursor:pointer;
+            font-weight:700;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#111;
+            color:#ffe500;
+            box-shadow:0px 0px 15px #ffe500;
+        }
+
+        /* INFO SECTION */
+        .info p{
+            font-size:18px;
+            margin:15px 0;
+            padding:15px;
+            background:rgba(255,255,255,0.1);
+            border-radius:10px;
+            backdrop-filter:blur(10px);
+        }
+
+        .info strong{
+            color:#ffe500;
+        }
+
+        .icon{
+            font-size:22px;
+            margin-right:8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="header">
+        <h1>📩 Contact Us</h1>
+        <p>Let’s create something awesome together. Send your message!</p>
+    </div>
+
+    <div class="contact-area">
+
+        <!-- FORM -->
+        <div class="box">
+            <h2>Send Message</h2>
+            <form>
+                <input class="input-field" type="text" placeholder="Your Name" required>
+                <input class="input-field" type="email" placeholder="Your Email" required>
+                <textarea class="input-field" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="box info">
+            <h2>📍 Contact Details</h2>
+            <p><span class="icon">📧</span> <strong>Email:</strong> sagar.chavda963@gmail.com</p>
+            <p><span class="icon">📞</span> <strong>Phone:</strong> +91 96244 59963</p>
+            <p><span class="icon">📍</span> <strong>Address:</strong> Varacha, India, Earth 🌍</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

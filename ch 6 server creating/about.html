@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:"Inter",sans-serif;
+    background:linear-gradient(120deg,#dfe7f5,#c6ced7);
+    color:#1a1a1a;
+    overflow-x:hidden;
+    animation:fade .8s ease;
+}
+
+/* Animation */
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* Navbar */
+nav{
+    position:sticky;top:0;z-index:1000;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 70px;
+    background:rgba(255,255,255,0.35);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.4);
+}
+.logo{
+    font-size:28px;font-weight:800;color:#0a66ff;
+}
+nav ul{display:flex;gap:35px;list-style:none;}
+nav a{
+    text-decoration:none;font-weight:600;font-size:18px;color:#333;transition:0.3s;
+}
+nav a:hover{color:#0a66ff;}
+
+/* Header */
+.header{
+    text-align:center;padding:90px 20px 40px;
+}
+.header h1{
+    font-size:60px;font-weight:900;
+    background:linear-gradient(45deg,#0a66ff,#00d4ff);
+    -webkit-background-clip:text;color:transparent;
+}
+.header p{font-size:20px;color:#444;margin-top:10px;max-width:600px;margin:auto;}
+
+/* About Section */
+.about{
+    display:flex;justify-content:center;align-items:center;
+    flex-wrap:wrap;gap:60px;padding:80px 60px;
+}
+
+.about img{
+    width:350px;height:350px;border-radius:25px;object-fit:cover;
+    box-shadow:0 20px 50px rgba(0,0,0,0.1);
+    transition:.4s;
+}
+.about img:hover{transform:scale(1.05);}
+
+.about-text{max-width:540px;text-align:left;}
+.about-text h2{
+    font-size:40px;font-weight:800;margin-bottom:15px;color:#0a66ff;
+}
+.about-text p{font-size:18px;color:#555;line-height:1.7;}
+
+/* Values */
+.values{text-align:center;padding:80px 30px;}
+.values h2{font-size:42px;font-weight:800;margin-bottom:50px;}
+
+.cards{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:35px;
+}
+
+.card{
+    width:280px;padding:30px;border-radius:20px;text-align:center;
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(12px);
+    transition:.3s;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    cursor:pointer;
+}
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 50px rgba(0,0,0,0.15);
+}
+.card h3{font-size:24px;color:#0a66ff;margin-bottom:10px;}
+.card p{color:#444;font-size:16px;}
+
+/* Footer */
+footer{
+    text-align:center;padding:25px;margin-top:60px;
+    color:#666;font-size:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">META</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="header">
+    <h1>About Us</h1>
+    <p>We build future-ready digital experiences that blend technology and design beautifully.</p>
+</div>
+
+<section class="about">
+    <img src="https://via.placeholder.com/400" alt="">
+    
+    <div class="about-text">
+        <h2>Who We Are</h2>
+        <p>
+           We are a next-generation team focused on innovation, clarity, and human-centered digital experiences. 
+           Our goal is simple — build meaningful technology that inspires impact.
+        </p>
+    </div>
+</section>
+
+<section class="values">
+    <h2>Our Values</h2>
+    <div class="cards">
+        <div class="card"><h3>🚀 Innovation</h3><p>We build the impossible and think beyond limits.</p></div>
+        <div class="card"><h3>🤝 Trust</h3><p>Relationships built on honesty, transparency, and respect.</p></div>
+        <div class="card"><h3>⭐ Excellence</h3><p>Every detail matters — quality is our identity.</p></div>
+    </div>
+</section>
+
+<footer>© 2025 META — All Rights Reserved.</footer>
+
+</body>
+</html>

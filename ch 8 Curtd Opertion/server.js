@@ -7,42 +7,42 @@ let allUsers = [
     {
         Id: "201",
         Name: "Sagar Chavda",
-        Email: "sagarchavda963@gmail.com",
+        Email: "sagar.chavda963@gmail.com",
         Password: "Sagar@721",
         Phone: 9624459963,
         Address: "Surat , Gujarat",
     },
     {
         Id: "202",
-        Name: "Dhruvin vala",
-        Email: "dr22@gmail.com",
-        Password: "dhruvin@123",
-        Phone: 9776545811,
-        Address: "Mahuva ,Bhavnagar",
+        Name: "savan ladva",
+        Email: "savanl@gmail.com",
+        Password: "Savan@844",
+        Phone: 9824458682,
+        Address: "Mumbai , Maharastra",
     },
     {
         Id: "203",
-        Name: "Darshan Parmar",
-        Email: "dharshan14@gmail.com",
-        Password: "Dp27@123",
-        Phone: 9276847417,
-        Address: "Rajula, bhavnagar",
+        Name: "Anil Gediya",
+        Email: "anig58@gmail.com",
+        Password: "Anig@555",
+        Phone: 9485566241,
+        Address: "Talaja,Bhavnagar",
     },
     {
         Id: "204",
-        Name: "savan ladva",
-        Email: "savan99@gmail.com",
-        Password: "Savan@123",
-        Phone: 9909451987,
-        Address: "Mumbai,Maharasth",
+        Name: "Dhruvin Vala",
+        Email: "dhruvin22gmail.com",
+        Password: "Dhrubhai@256",
+        Phone: 9275546856,
+        Address: "Mavuva, Gujarat",
     },
     {
         Id: "205",
         Name: "Ronak Solanki",
-        Email: "ronaks444@gmail.com",
-        Password: "Ronak125@12",
-        Phone: 9265612346,
-        Address: "Ahemdabad,gujarat",
+        Email: "rona256@gmail.com",
+        Password: "Itsrona@147",
+        Phone: 9255866912,
+        Address: "Christchurch, New Zealand",
     },
 ]
 
@@ -50,21 +50,35 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded());
 
 app.get('/', (req, res) => {
-    res.render('home', {
-        name: "Sagar",
+    res.render('form', {
+        name: "sagar",
         isAdmin: true,
         allUsers,
     });
 })
 
-let id = 206;
+app.get('/addUserPage', (req, res) => {
+    res.render('table', {
+        allUsers,
+    });
+})
+
+app.get('/deleteUser', (req, res) => {
+    console.log(req.query);
+
+    const Userid = req.query.Id;
+
+    allUsers = allUsers.filter((User) => User.Id != Userid);
+
+    res.redirect('/addUserPage');
+})
+
+let id = 106;
 app.post('/addUser', (req, res) => {
     const user = req.body;
 
     user.Id = id;
     id++;
-    console.log(req.query)
-    console.log(user)
 
     allUsers.push(user);
     res.redirect('/');
@@ -72,8 +86,8 @@ app.post('/addUser', (req, res) => {
 
 app.listen(PORT, (err) => {
     if (err) {
-        console.log("Server is Not started....", err);
+        console.log("Server is Not started...", err);
         return false;
     }
-    console.log("Sever is started......");
+    console.log("Server is Started.....");
 })

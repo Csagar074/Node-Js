@@ -46,21 +46,45 @@ let allUsers = [
     },
 ]
 
+let id = 206;
+
 app.set("view engine", "ejs");
 app.use(express.urlencoded());
 
 app.get('/', (req, res) => {
-    res.render('form', {
-        name: "sagar",
+    res.render('table', {
+        name: "Sagar",
         isAdmin: true,
         allUsers,
     });
 })
 
 app.get('/addUserPage', (req, res) => {
-    res.render('table', {
+    res.render('form', {
         allUsers,
     });
+})
+
+app.get('/edit', (req, res) => {
+    const user = allUsers.find((user) => user.Id == req.query.Id);
+    if (!user) {
+        return res.redirect('/');
+    }
+    res.render('edit', {
+        user
+    });
+});
+
+app.post('/updateUser', (req, res) => {
+    allUsers = allUsers.map((user) => {
+        if (user.Id == req.body.Id) {
+            return req.body;
+        }
+        else {
+            return user;
+        }
+    })
+    return res.redirect('/');
 })
 
 app.get('/deleteUser', (req, res) => {
@@ -73,7 +97,7 @@ app.get('/deleteUser', (req, res) => {
     res.redirect('/addUserPage');
 })
 
-let id = 106;
+
 app.post('/addUser', (req, res) => {
     const user = req.body;
 
@@ -83,7 +107,6 @@ app.post('/addUser', (req, res) => {
     allUsers.push(user);
     res.redirect('/');
 })
-
 app.listen(PORT, (err) => {
     if (err) {
         console.log("Server is Not started...", err);

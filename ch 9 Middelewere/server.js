@@ -4,6 +4,10 @@ const app=express();
 
 app.set('view engine','ejs');
 
+// middlewere 
+const(req,res,())=>{
+
+}
 
 app.listen((req,res)=>{
     if(err){

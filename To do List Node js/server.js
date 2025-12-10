@@ -1,5 +1,4 @@
 
-const { name } = require("ejs");
 const express = require("express");
 const app = express();
 
@@ -42,6 +41,8 @@ app.get("/addUser", (req, res) => {
 // add task logic 
 app.post("/addUser", (req, res) => {
     const user = req.body;
+    console.log(user);
+    
 
     user.id = id;
     id++;

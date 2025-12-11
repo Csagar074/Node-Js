@@ -1,18 +1,35 @@
-const express=require('express');
-const PORT =8001;
-const app=express();
 
-app.set('view engine','ejs');
+const express = require('express');
+const app = express();
+const port = 8001;
 
-// middlewere 
-const(req,res,())=>{
+app.set('view engine', 'ejs')
+app.use('/', express.static('public'));
 
-}
 
-app.listen((req,res)=>{
-    if(err){
-        console.log("Server is NOt Created.....");
-        return false;
+app.get('/', (req, res) => {
+    res.render('ageCheck');
+});
+
+const middleware = (req, res, next) => {
+
+    if (req.query.age >= 18) {
+        next();
+    } else {
+        return res.redirect('/404');
     }
-    console.log("Server is Started.....");
+}
+app.get('/404', (req, res) => {
+    res.render('404');
+})
+
+app.get('/home', middleware, (req, res) => {
+    res.render('home');
+})
+
+app.listen(port, (err) => {
+    if (err) {
+        console.log("Server is Not Started...", err);
+    }
+    console.log("Sever is started.....");
 })

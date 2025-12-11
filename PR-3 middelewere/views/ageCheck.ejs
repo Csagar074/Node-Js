@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verification</title>
+
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4a00e0, #8e2de2);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .age-check-container {
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .age-check-card {
+            background: #ffffff;
+            padding: 35px 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .age-check-icon i {
+            font-size: 55px;
+            color: #6a11cb;
+            background: rgba(106, 17, 203, 0.1);
+            padding: 18px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 7px;
+            display: block;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            outline: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #6a11cb;
+            box-shadow: 0px 0px 5px rgba(106, 17, 203, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #33c942;
+            border: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #5200a8;
+            transform: translateY(-3px);
+        }
+
+        .submit-btn i {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="age-check-container">
+        <div class="age-check-card">
+            <div class="age-check-icon">
+                <i class="ri-shield-check-line"></i>
+            </div>
+
+            <h1>Age Verification</h1>
+            <p>Please enter your age to continue</p>
+
+            <form class="age-form" method="get" action="/home">
+                <div class="input-group">
+                    <label for="age">Enter Your Age</label>
+                    <input type="number" id="age" name="age" placeholder="18" min="1" max="120" required>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="ri-arrow-right-line"></i>
+                    Continue
+                </button>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

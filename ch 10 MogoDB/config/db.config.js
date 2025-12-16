@@ -1,15 +1,12 @@
-const mongoose =require('mongoose');
+const mongoose = require('mongoose');
 
-const URI=("mongodb://localhost:27017/movie System")
+const URI = "mongodb://localhost:27017/Book-Management";
 
-mongoose.connect(URI)
-.then(()=>{
-    console.log("Mogodb is Connnect");
-
-})
-.catch((err)=>{
-    console.log("Mogodb is Not Connected.....",err);
-} )
-.finally(()=>{
-    console.log("Finally .....");
-})
+mongoose.connect(URI).then(() => {
+    console.log("Database is conncted...");
+}).catch(err => {
+    console.log("Database is not conncted...");
+    console.log("Error : ", err);
+}).finally(() => {
+    console.log("Finally....");
+});

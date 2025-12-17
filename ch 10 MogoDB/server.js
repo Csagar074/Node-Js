@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     return res.render('form');
 });
 
-// Insert Book
+// Insert Book:
 app.post('/addBook', async (req, res) => {
     console.log(req.body);
 
@@ -23,7 +23,7 @@ app.post('/addBook', async (req, res) => {
     console.log(bookAdded);
 
     if (bookAdded) {
-        console.log("Book inserted Successfully.....");
+        console.log("Book insep Successfully.....");
 
         return res.redirect('/');
     } else {
@@ -31,6 +31,34 @@ app.post('/addBook', async (req, res) => {
     }
 
 
+});
+
+// Book Fatch
+app.get('/',async (req,res)=>{
+
+    // All Book Fatch 
+    const allBooks=await Book.find();
+
+    console.log(allBooks);
+
+    return res.render('table');
+})
+
+
+// Delete Book 
+app.get('/deleteBook', async (req, res) => {
+    console.log(req.query);
+
+    const deleteBook = await Book.findByIdAndDelete(req.query.BookId);
+    console.log(deleteBook);
+
+    if (deleteBook) {
+        console.log("Book Delete Successfully....");
+    } else {
+        console.log("Book Delete Failed....");
+    }
+
+    return res.redirect('/');
 });
 
 app.listen(PORT, (err) => {

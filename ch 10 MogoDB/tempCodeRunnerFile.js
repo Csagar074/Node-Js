@@ -1,1 +1,1 @@
-'/addBook'
+addBook

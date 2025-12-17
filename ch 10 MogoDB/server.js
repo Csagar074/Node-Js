@@ -1,70 +1,55 @@
-require('./config/db.config');
+
 const express = require('express');
-const Book = require("./model/book.model");
+const book = require('./model/book.model');
+require('mongoose');
+require('./config/db.config')
 
 const PORT = 8001;
+
 const app = express();
-
-app.set('view engine', 'ejs');
-
-// Middleware
+app.set("view engine", "ejs");
 app.use(express.urlencoded());
 
-app.get('/', (req, res) => {
-    return res.render('form');
-});
-
-// Insert Book:
-app.post('/addBook', async (req, res) => {
-    console.log(req.body);
-
-    const bookAdded = await Book.create(req.body);
-
-    console.log(bookAdded);
-
-    if (bookAdded) {
-        console.log("Book insep Successfully.....");
-
-        return res.redirect('/');
-    } else {
-        console.log("Book is insertion failed....");
-    }
-
-
-});
-
-// Book Fatch
-app.get('/',async (req,res)=>{
-
-    // All Book Fatch 
-    const allBooks=await Book.find();
-
-    console.log(allBooks);
-
-    return res.render('table');
+app.get("/", (req, res) => {
+    book.find()
+        .then((allBooks) => {
+            res.render("view", { allBooks });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 })
 
+app.get("/addBookPage", (req, res) => {
+    res.render("form");
+})
 
-// Delete Book 
-app.get('/deleteBook', async (req, res) => {
-    console.log(req.query);
+app.post("/addBook", (req, res) => {
 
-    const deleteBook = await Book.findByIdAndDelete(req.query.BookId);
-    console.log(deleteBook);
+    book.create(req.body).then(() => {
+        console.log("Data added successfully...");
+    }).catch((err) => {
+        console.log("Data not added...", err);
+    });
 
-    if (deleteBook) {
-        console.log("Book Delete Successfully....");
-    } else {
-        console.log("Book Delete Failed....");
-    }
+    res.redirect("/");
+});
 
-    return res.redirect('/');
+app.get("/deleteBook", (req, res) => {
+    book.findByIdAndDelete(req.query.bookId)
+        .then(() => {
+            console.log("Book deleted successfully...");
+        })
+        .catch(err => {
+            console.log("Book not deleted", err);
+        })
+
+    res.redirect("/");
 });
 
 app.listen(PORT, (err) => {
-    if (err) {
-        console.log("Server is not started..", err);
-        return false;
-    }
-    console.log("Server is strated ");
+    if (err)
+        console.log("Server is not started...", err);
+
+    console.log("Server is started...");
 })

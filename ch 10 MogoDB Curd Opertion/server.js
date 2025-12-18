@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 app.get("/addBookPage", (req, res) => {
     res.render("form");
 })
-
+// Insert logic 
 app.post("/addBook", (req, res) => {
 
     book.create(req.body).then(() => {
@@ -35,6 +35,37 @@ app.post("/addBook", (req, res) => {
     res.redirect("/");
 });
 
+// Edit Root 
+app.get("/editBook/:bookId",async (req,res)=>{
+    console.log(req.params);
+
+    const newBook = await book.findById(req.params.bookId);
+
+
+    console.log(newBook);
+
+    if(newBook){
+        return res.render('edit',{newBook});
+    }
+    else{
+        return res.redirect('/');
+    }
+    
+})
+
+// Update Logic 
+app.post('/UpdateBook',async(req,res)=>{
+    
+    console.log("data",req.body);
+     const updatedBook = await book.findByIdAndUpdate(req.body.id,req.body,{new:true});
+
+    console.log(updatedBook);
+
+    return res.redirect('/');
+    
+})
+
+// Delete logic 
 app.get("/deleteBook", (req, res) => {
     book.findByIdAndDelete(req.query.bookId)
         .then(() => {
@@ -51,5 +82,5 @@ app.listen(PORT, (err) => {
     if (err)
         console.log("Server is not started...", err);
 
-    console.log("Server is started...");
+    console.log(`Server is started...http://localhost:${PORT}`);
 })

@@ -85,10 +85,10 @@
                                     </span>
                                 </div>
 
-                                <div class="mt-auto d-flex justify-content-center gap-3">
-                                    <a href="#" class="btn btn-outline-info btn-sm px-4">Edit</a>
-                                    <a href="/deleteBook?bookId=<%= book._id %>"
+                                <a href="/deleteBook?bookId=<%= book._id %>"
                                         class="btn btn-outline-success btn-sm px-4">Delete</a>
+                                    <a href="/editBook/<%= book.id %>"
+                                        class="btn btn-outline-success btn-sm px-4">Edit</a>
                                 </div>
 
                             </div>

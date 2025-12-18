@@ -36,11 +36,19 @@
                                         <%= book.book_lang %>
                                     </p>
                                 </div>
-                                <div class="d-flex align-items-center justify-content-center gap-5 my-3">
-                                    <a href="#" class="btn btn-outline-success">Edit</a>
+                                <!-- <div class="d-flex align-items-center justify-content-center gap-5 my-3">
+                                    <a href="" class="btn btn-outline-success">Edit</a>
                                     <a href="/deleteBook?bookId=<%= book._id %>"
                                         class="btn btn-outline-danger">Delete</a>
-                                </div>
+                                </div> -->
+                                 <td>
+                                    <button class="btn btn-success"><a href="/editBook/<%= book.id %>"
+                                    style="color: white; text-decoration: none;">Edit</a></button>
+                            <button class="btn btn-danger"><a href="/deleteBook?bookId=<%= book.id %>"
+                                    style="color: white; text-decoration: none;">Delete</a></button>
+                            
+                        </td>
+
                             </div>
                         </div>
                     </div>

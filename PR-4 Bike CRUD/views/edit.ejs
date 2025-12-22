@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Bike</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+        }
+        .card {
+            border-radius: 20px;
+        }
+        .btn {
+            border-radius: 25px;
+        }
+        label {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="card shadow-lg p-4 col-md-6">
+        
+        <h3 class="text-center text-primary mb-4">✏ Edit Bike Details</h3>
+
+        <form action="/updateBike" method="POST">
+            <input type="hidden" name="id" value="<%= bike._id %>">
+              <div class="mb-3">
+                <label class="form-label">Bike Image</label>
+                <input type="text" class="form-control" name="bike_image" value="<%= bike.bike_image %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Bike Name</label>
+                <input type="text" class="form-control" name="bike_name" value="<%= bike.bike_name %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Bike Brand</label>
+                <input type="text" class="form-control" name="bike_brand" value="<%= bike.bike_brand %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Bike Price (₹)</label>
+                <input type="number" class="form-control" name="bike_price" value="<%= bike.bike_price %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Bike Color</label>
+                <input type="text" class="form-control" name="bike_color" value="<%= bike.bike_color %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Bike Engine</label>
+                <input type="text" class="form-control" name="bike_engine" value="<%= bike.bike_engine %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Launch Year</label>
+                <input type="number" class="form-control" name="bike_launch" value="<%= bike.bike_launch %>" required>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="/" class="btn btn-secondary">⬅ Back</a>
+                <button type="submit" class="btn btn-primary">💾 Update Bike</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

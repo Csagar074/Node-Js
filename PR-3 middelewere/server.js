@@ -31,7 +31,7 @@ app.get('/404', (req, res) => {
 
 app.listen(port, (err) => {
     if (err) {
-        console.log("Server is Not Started...", err);
+        console.log("Server is not Started...", err);
     }
-    console.log("Sever is started.....");
+    console.log("Sever is started....");
 })

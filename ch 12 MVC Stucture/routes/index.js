@@ -1,12 +1,15 @@
-const express=require('express');
 
-const route=express.Router();
+const express = require('express');
 
-const  homecontroller = require('../controllers/home.controller');
+const route = express.Router();
+
+const { homePage, aboutPage, contectPage } = require('../controllers/home.controller');
+
 console.log("Routing.....");
 
+route.get('/', homePage);
+route.get('/about', aboutPage);
+route.get('/contect', contectPage);
 
-route.get('/', homecontroller.homePage);
-route.get('/about', homecontroller.aboutPage);
 
-module.exports=route;
+module.exports = route;

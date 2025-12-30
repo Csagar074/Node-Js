@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Employee</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      min-height: 100vh;
+      padding-top: 40px;
+      color: #fff;
+    }
+
+    .card {
+      border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+    }
+
+    .form-title {
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .checkbox-grid,
+    .gender-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 12px;
+    }
+
+    .btn-primary {
+      border-radius: 10px;
+      padding: 10px 18px;
+    }
+
+    .back-link {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-9">
+
+        <div class="card p-4 bg-light text-dark">
+          <h3 class="text-center form-title mb-3">Update Employee</h3>
+          <p class="text-center text-muted mb-4">Modify employee details and save changes</p>
+
+          <form action="/emp/updateEmp" method="POST">
+            <input type="hidden" name="id" value="<%= edit._id %>">
+
+            <div class="mb-3">
+              <label class="form-label">Employee Name</label>
+              <input type="text" name="emp_name" value="<%= edit.emp_name %>" class="form-control"
+                placeholder="Enter employee name">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="emp_email" value="<%= edit.emp_email %>" class="form-control"
+                placeholder="Enter email">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" name="emp_password" value="<%= edit.emp_password %>" class="form-control"
+                placeholder="Enter password">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="number" name="emp_phone" value="<%= edit.emp_phone %>" class="form-control"
+                placeholder="Enter phone number">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Gender</label>
+              <div class="gender-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="emp_gender" value="Male"
+                    <%= edit.emp_gender==='Male' ? 'checked' : '' %>>
+                  <label class="form-check-label">Male</label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="emp_gender" value="Female"
+                    <%= edit.emp_gender==='Female' ? 'checked' : '' %>>
+                  <label class="form-check-label">Female</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Salary</label>
+              <input type="number" name="emp_salary" value="<%= edit.emp_salary %>" class="form-control"
+                placeholder="Enter salary">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Hobbies</label>
+              <div class="checkbox-grid">
+                <% ["Reading","Cricket","Music","UNO"].map(skill=>{ %>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="<%= skill %>" name="emp_Hobbys"
+                    <%= edit.emp_hobby.includes(skill) ? 'checked' : '' %>>
+                  <label class="form-check-label"><%= skill %></label>
+                </div>
+                <% }) %>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Role</label>
+              <select class="form-select" name="emp_Role">
+                <% ["Owner","Manager","Employee","Intern"].map(role=>{ %>
+                <option value="<%= role %>" <%= edit.emp_role===role ? 'selected' : '' %>>
+                  <%= role %>
+                </option>
+                <% }) %>
+              </select>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="/emp/allEmployeePage" class="back-link">← Back to Employee List</a>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

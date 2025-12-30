@@ -9,7 +9,7 @@ app.use(express.urlencoded());
 
 app.use('/',require('./routes/'));   
 app.use('/emp',require('./routes/emp.route'));
-
+    
 app.listen(PORT,(err)=>{
     if(err){
         console.log("Server is Not Started.....");
@@ -17,4 +17,4 @@ app.listen(PORT,(err)=>{
     }
     console.log("Server is Started......");  
 
-});
+}); 

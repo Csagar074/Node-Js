@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form - LinkedIn Style</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f3f2ef 0%, #e8e6e3 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            color: #000000;
+            font-size: 2rem;
+            font-weight: 600;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Form Card Styles */
+        .form-card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 24px 32px;
+            width: 100%;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .subtitle {
+            color: #666666;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 24px;
+        }
+
+        .form-group-full {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            color: #000000;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 13px;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            width: 100%;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #0a66c2;
+            box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.1);
+            outline: none;
+        }
+
+        .form-control:hover,
+        .form-select:hover {
+            border-color: #000000;
+        }
+
+        .gender-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 6px;
+        }
+
+        .form-check {
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-check-input {
+            width: 18px;
+            height: 18px;
+            border: 1px solid #d0d0d0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 0;
+        }
+
+        .form-check-input:checked {
+            background-color: #0a66c2;
+            border-color: #0a66c2;
+        }
+
+        .form-check-input:focus {
+            box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.2);
+            border-color: #0a66c2;
+        }
+
+        .form-check-label {
+            font-size: 13px;
+            color: #000000;
+            margin-left: 6px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .btn-primary {
+            background-color: #0a66c2;
+            border: none;
+            border-radius: 24px;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #004182;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Employee Grid Styles */
+        .employee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .employee-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid #08089f;
+        }
+
+        .employee-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+            height: 80px;
+            position: relative;
+        }
+
+        .profile-section {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            margin-top: -40px;
+        }
+
+        .profile-icon {
+            width: 80px;
+            height: 80px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 3px solid #ffffff;
+        }
+
+        .profile-icon i {
+            font-size: 36px;
+            color: #0a66c2;
+        }
+
+        .employee-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 4px;
+        }
+
+        .employee-role {
+            color: #666666;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .card-divider {
+            height: 1px;
+            background: #e9e9e9;
+            margin: 0 20px;
+        }
+
+        .card-details {
+            padding: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-item i {
+            font-size: 18px;
+            color: #0a66c2;
+            width: 24px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: #000000;
+            margin-right: 6px;
+        }
+
+        .salary-badge {
+            background: #d4edda;
+            color: #155724;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .hobbies-text {
+            color: #666666;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Number Input Spinners */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            opacity: 1;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 24px;
+            }
+
+            .form-card {
+                padding: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .employee-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-btn {
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 10px 22px;
+            cursor: pointer;
+            transition: all .3s ease;
+            overflow: hidden;
+        }
+
+        .action-btn a {
+            color: rgb(78, 0, 0);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: .4px;
+        }
+
+        .action-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            opacity: 0;
+            transition: .4s;
+            pointer-events: none;
+            /* 🔥 THIS FIXES YOUR CLICK */
+        }
+
+        .action-btn:hover::before {
+            opacity: 1;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Delete Style */
+        .action-btn.delete {
+            border-color: rgba(255, 60, 60, 0.5);
+        }
+
+        .action-btn.delete:hover {
+            box-shadow: 0 10px 30px rgba(255, 60, 60, 0.4);
+        }
+
+        /* Edit Style */
+        .action-btn.edit {
+            border-color: rgba(80, 150, 255, 0.5);
+        }
+
+        .action-btn.edit:hover {
+            box-shadow: 0 10px 30px rgba(80, 150, 255, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="form-card">
+            <div style="display: flex; justify-content: space-between;">
+                <h1 style="margin: 0px;">Edit Employee Form</h1>
+                <a href="/form/allEmp" style="text-decoration: none; display: inline-block; color: rgb(0, 0, 59);">Go
+                    To All
+                    Employee Page
+                    →</a>
+            </div>
+            <p class="subtitle">Please fill in your details below</p>
+
+            <form id="employeeForm" action="/form/UpdateEmp" method="POST" enctype="multipart/form-data">
+                <div class="form-grid">
+                    <input type="hidden" name="id" value="<%= edit._id %>">
+                    <div>
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" value="<%= edit.emp_Name %>" name="emp_Name"
+                            placeholder="Enter your full name" required>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" value="<%= edit.emp_Email %>" name="emp_Email"
+                            placeholder="you@example.com" required>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" value="<%= edit.emp_Password %>" name="emp_Password"
+                            placeholder="Create a password" required>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Salary</label>
+                        <input type="number" class="form-control" value="<%= edit.emp_Salary %>" name="emp_Salary"
+                            placeholder="Enter salary" required>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Gender</label>
+                        <div class="gender-group">
+                            <div class="form-check">
+                                <input class="form-check-input" name="emp_gender" type="radio" name="gender"
+                                    value="male" <%=edit.emp_gender==='male' ? 'checked' : '' %>>
+                                <label class="form-check-label">Male</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="emp_gender" type="radio" name="gender"
+                                    value="female" <%=edit.emp_gender==='female' ? 'checked' : '' %>>
+                                <label class="form-check-label">Female</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Role</label>
+                        <select class="form-select" name="emp_Role" required>
+                            <% ["Owner" , "Manager" , "Employee" , "Intern" ].map((role)=> { %>
+                                <option value="<%= role %>" <%=edit.emp_Role===role ? 'selected' : '' %>>
+                                    <%= role %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+
+                    <div class="form-group-full">
+                        <label class="form-label">Hobby's</label>
+                        <div class="checkbox-grid">
+                            <% ["Reading" , "Sports" , "Coding" , "Scrolling" ].map((skill)=> { %>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="<%= skill %>"
+                                        id="<%= skill.toLowerCase() %>" name="emp_Hobbys"
+                                        <%=edit.emp_Hobbys.includes(skill) ? 'checked' : '' %>>
+                                    <label class="form-check-label" for="<%= skill.toLowerCase() %>">
+                                        <%= skill %>
+                                    </label>
+                                </div>
+                                <% }) %>
+                        </div>
+                    </div>
+
+                    <div class="form-group-full">
+                        <label for="">Current Img</label>
+                        <img src="/<%= edit['emp_ProfilePic'] %>" alt="Profile Picture" class="profile-pic"
+                            width="61px" style="border-radius: 40%;">
+                        <label class="form-label">Profile Picture</label>
+
+                        <input type="file" class="form-control" name="emp_ProfilePic">
+                    </div>
+
+                    <div class="form-group-full">
+                        <button type="submit" class="btn btn-primary">Upadate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

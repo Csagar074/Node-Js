@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - EmpPortal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --bg-color: #f1f5f9;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #ffffff;
+            padding: 1rem 5%;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about-hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .about-hero p {
+            opacity: 0.9;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 10px auto 0;
+        }
+
+        .main-container {
+            max-width: 1000px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Grid for Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .feature-item h4 {
+            margin: 10px 0 5px;
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/" class="logo">
+            <i class="ri-shield-user-line"></i> EmpPortal
+        </a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/form/allEmp">Directory</a></li>
+            <li><a href="/about" style="color: var(--primary);">About</a></li>
+        </ul>
+    </nav>
+
+    <section class="about-hero">
+        <h1>About the System</h1>
+        <p>A modern solution for managing your workforce with ease and precision.</p>
+    </section>
+
+    <main class="main-container">
+        <div class="content-card">
+            <div class="section-title">
+                <i class="ri-rocket-2-line"></i> Our Mission
+            </div>
+            <p>
+                EmpPortal is designed to simplify human resource management. Whether you're a small startup or a growing
+                company, our tool helps you keep track of your most valuable asset—your employees.
+            </p>
+
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 40px 0;">
+
+            <div class="section-title">
+                <i class="ri-focus-3-line"></i> Key Features
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="ri-database-2-line"></i>
+                    <h4>Centralized Data</h4>
+                    <p>All employee records in one secure place.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="ri-search-eye-line"></i>
+                    <h4>Quick Search</h4>
+                    <p>Find any team member within seconds.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="ri-edit-box-line"></i>
+                    <h4>Easy Updates</h4>
+                    <p>Modify details with a user-friendly interface.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="ri-lock-password-line"></i>
+                    <h4>Secure Access</h4>
+                    <p>Your data is protected and kept private.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; text-align: center;">
+                <p style="color: var(--text-muted);">Built with ❤️ by <b>Sujal Kidecha</b></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 EmpPortal System | Version 1.0.0
+    </footer>
+
+</body>
+
+</html>

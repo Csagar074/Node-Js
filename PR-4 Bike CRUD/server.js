@@ -1,8 +1,8 @@
+require('./Config/db.config');
 
 const express = require('express');
 const Bike = require('./model/Bike.model');
-require('./Config/db.config');
-require('./Config/db.config');
+
 
 const PORT = 8001;
 const app = express();

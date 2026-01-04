@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Customer Data</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <style>
+    body{
+      background: linear-gradient(120deg,#c7d2fe,#eef2ff);
+      font-family: "Poppins", sans-serif;
+    }
+
+    .page-header{
+      margin: 25px 0 10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .page-header h2{
+      font-weight:700;
+      color:#0a1a66;
+    }
+
+    .page-header a{
+      text-decoration:none;
+      padding:8px 14px;
+      border-radius:10px;
+      border:1px solid #cfd7ff;
+      background:#fff;
+      font-size:14px;
+      font-weight:600;
+      transition:.25s;
+    }
+
+    .page-header a:hover{
+      background:#0a58ca;
+      color:#fff;
+    }
+
+    /* GRID */
+    .customer-grid{
+      margin-top:15px;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+      gap:24px;
+    }
+
+    /* CARD */
+    .customer-card{
+      border-radius:18px;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(120,120,255,.25);
+      box-shadow:0 15px 35px rgba(0,0,0,.08);
+      transition:.35s;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .customer-card:hover{
+      transform:translateY(-6px) scale(1.01);
+      box-shadow:0 25px 45px rgba(0,0,0,.18);
+    }
+
+    .card-header{
+      height:80px;
+      background:linear-gradient(135deg,#6f00ff,#1b2ccc);
+    }
+
+    .profile-section{
+      margin-top:-40px;
+      text-align:center;
+    }
+
+    .profile-icon img{
+      width:105px;
+      height:105px;
+      border-radius:18px;
+      border:4px solid #fff;
+      object-fit:cover;
+      box-shadow:0 10px 25px rgba(0,0,0,.25);
+    }
+
+    .customer-name{
+      margin-top:8px;
+      font-size:18px;
+      font-weight:700;
+      color:#0b1b55;
+    }
+
+    .Mobile_Number{ font-size:13px; color:#666; }
+
+    .card-details{ padding:14px 18px; }
+
+    .detail-item{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:6px 0;
+      font-size:14px;
+    }
+
+    .detail-item i{ color:#314bff; font-size:18px; }
+
+    .salary-badge{
+      background:#e4ffe9;
+      color:#0f5a22;
+      padding:3px 8px;
+      border-radius:8px;
+      font-weight:700;
+    }
+
+    .action-buttons{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .action-btn{
+      flex:1;
+      border:none;
+      padding:8px 0;
+      border-radius:12px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.25s;
+    }
+
+    .delete{ background:#ff3b3b; color:#fff; }
+    .delete:hover{ background:#d60000; }
+
+    .edit{ background:#0ab7ff; color:#fff; }
+    .edit:hover{ background:#0672ff; }
+
+    .action-btn a{ color:#fff; text-decoration:none; display:block; }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="page-header">
+    <h2>All Customer Data</h2>
+    <a href="/">← Back to Add Customer Form</a>
+  </div>
+
+  <div class="customer-grid">
+
+    <% allcusto.forEach(Customer => { %>
+
+      <div class="customer-card">
+
+        <div class="card-header"></div>
+
+        <div class="profile-section">
+          <div class="profile-icon">
+            <img src="../<%= Customer['order_ProfilePic'] %>" alt="Profile" />
+          </div>
+
+          <div class="customer-name"><%= Customer['Customer_Name'] %></div>
+          <div class="Mobile_Number"><%= Customer['Mobile_Number'] %></div>
+        </div>
+
+        <div class="card-details">
+
+          <div class="detail-item">
+            <i class="ri-mail-fill"></i>
+            <span><%= Customer['customer_Email'] %></span>
+          </div>
+
+          <div class="detail-item">
+            <i class="ri-lock-password-fill"></i>
+            <span><%= Customer['customer_Password'] %></span>
+          </div>
+
+          <div class="detail-item">
+            <i class="ri-money-rupee-circle-fill"></i>
+            <span class="salary-badge">₹ <%= Customer['Price'] %></span>
+          </div>
+
+          <div class="detail-item">
+            <i class="ri-shopping-bag-3-fill"></i>
+            <span><%= Customer['Order'] %></span>
+          </div>
+
+          <div class="detail-item">
+            <i class="ri-bank-card-fill"></i>
+            <span><%= Customer['Payment_Method'] %></span>
+          </div>
+
+          <div class="action-buttons">
+            <button class="action-btn delete">
+              <a href="/deletecusto/<%= Customer.id %>">Delete</a>
+            </button>
+
+            <button class="action-btn edit">
+              <a href="/edit/<%= Customer.id %>">Edit</a>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    <% }) %>
+
+  </div>
+</div>
+</body>
+</html>

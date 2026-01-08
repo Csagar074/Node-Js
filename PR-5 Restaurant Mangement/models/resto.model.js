@@ -25,14 +25,7 @@ const customerSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    // Quantity: {
-    //     type: Number,
-    //     required: true,
-    // },
-    // Gst:{
-    //     type:Number,
-    //     required:true,
-    // },
+
      Payment_Method: {
         type: String,
         required: true,

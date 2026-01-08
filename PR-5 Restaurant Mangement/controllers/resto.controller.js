@@ -38,6 +38,7 @@ const addcustomer = async (req, res) => {
 const deletecustomer = async (req, res) => {
     try {
         const deletecusto= await Customer.findByIdAndDelete(req.params.id);
+         fs.unlink(deletecusto.order_ProfilePic, (err) => { })
 
         if (deletecusto) {
             console.log("Customer Deleted Successfully");

@@ -1,0 +1,132 @@
+<%- include("../header") %>
+
+<style>
+    .profile-card {
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        background: #fff;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .profile-header {
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        padding: 30px;
+        text-align: center;
+        color: white;
+    }
+
+    .profile-img {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        object-fit: cover;
+        margin-bottom: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+        transform: rotate(5deg) scale(1.1);
+    }
+
+    .profile-body {
+        padding: 25px;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px dashed #ddd;
+        font-size: 14px;
+    }
+
+    .info-row:last-child {
+        border-bottom: none;
+    }
+
+    .edit-btn {
+        margin-top: 20px;
+        width: 100%;
+        border-radius: 25px;
+        padding: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .edit-btn:hover {
+        background-color: #28a745;
+        border-color: #28a745;
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="page-wrapper">
+    <div class="page-breadcrumb bg-light">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <h4 class="page-title">Admin Profile</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+
+                <div class="profile-card">
+                    
+                    <!-- Header -->
+                    <div class="profile-header">
+                        <img src="<%= admin.profile_image %>" class="profile-img" alt="Admin Image">
+                        <h4 class="mt-2"><%= admin.fname %> <%= admin.lname %></h4>
+                        <small><%= admin.email %></small>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="profile-body">
+                        <div class="info-row">
+                            <span><strong>Phone:</strong></span>
+                            <span><%= admin.phone %></span>
+                        </div>
+                        <div class="info-row">
+                            <span><strong>Gender:</strong></span>
+                            <span><%= admin.gender %></span>
+                        </div>
+                        <div class="info-row">
+                            <span><strong>Hobby:</strong></span>
+                            <span><%= admin.Hobby %></span>
+                        </div>
+                        <div class="info-row">
+                            <span><strong>City:</strong></span>
+                            <span><%= admin.city %></span>
+                        </div>
+                        <div class="info-row">
+                            <span><strong>About:</strong></span>
+                            <span><%= admin.about %></span>
+                        </div>
+
+                        <a href="/editAdmin/<%= admin.id %>" class="btn btn-info edit-btn">
+                            ✏️ Edit Profile
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../footer") %>

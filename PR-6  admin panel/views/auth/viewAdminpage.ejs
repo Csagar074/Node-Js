@@ -1,0 +1,177 @@
+<%- include('../header') %>
+
+<style>
+    
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .page-title {
+        font-weight: 700;
+        color: #4e73df;
+    }
+
+    .table thead {
+        background: linear-gradient(45deg, #4e73df, #1cc88a);
+        color: white;
+    }
+
+    .table tbody tr {
+        transition: all 0.3s ease;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1f5ff;
+        transform: scale(1.01);
+    }
+
+    .profile-img {
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .profile-img:hover {
+        transform: scale(1.5);
+        z-index: 1000;
+    }
+
+    .btn-action {
+        border-radius: 20px;
+        padding: 5px 15px;
+        font-size: 14px;
+    }
+
+    .badge-custom {
+        padding: 6px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+    }
+
+    .search-box {
+        max-width: 300px;
+        margin-bottom: 15px;
+        float: right;
+    }
+
+</style>
+
+<div class="page-wrapper">
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">All Admin</h4>
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Admin List</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title">Admin Management</h5>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table id="zero_config" class="table table-striped table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Password</th>
+                                        <th>Phone</th>
+                                        <th>Gender</th>
+                                        <th>Hobby</th>
+                                        <th>City</th>
+                                        <th>About</th>
+                                        <th>Image</th>
+                                        <% if(admin.id==="6960a3d703698c402a41bfe1" ) {%>
+                                        <th colspan="2">Action</th>
+                                        <% } %>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminTable">
+                                    <% allAdmin.map((data, index)=> { %>
+                                    <tr>
+                                        <td><%= index + 1 %></td>
+
+                                        <td><span class="badge badge-primary badge-custom"><%= data.fname %></span></td>
+                                        <td><span class="badge badge-info badge-custom"><%= data.lname %></span></td>
+
+                                        <td><%= data.email %></td>
+                                        <td>••••••••</td>
+                                        <td><%= data.phone %></td>
+
+                                        <td>
+                                            <span class="badge badge-success badge-custom">
+                                                <%= data.gender %>
+                                            </span>
+                                        </td>
+
+                                        <td><%= data.Hobby %></td>
+                                        <td><%= data.city %></td>
+
+                                        <td style="max-width: 150px;">
+                                            <%= data.about %>
+                                        </td>
+
+                                        <td>
+                                            <img src="<%= data.profile_image %>" width="60" class="profile-img"
+                                                alt="Profile">
+                                        </td>
+
+                                        <% if(admin.id==="6960a3d703698c402a41bfe1" ) {%>
+                                        <td>
+                                            <a href="/deleteAdmin?adminId=<%= data.id %>"
+                                                class="btn btn-danger btn-action"
+                                                onclick="return confirm('Are you sure you want to delete this admin?')">
+                                                Delete
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/editAdmin/<%= data.id %>"
+                                                class="btn btn-warning btn-action">
+                                                Edit
+                                            </a>
+                                        </td>
+                                        <% } %>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Live Search Function
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+        let filter = this.value.toLowerCase();
+        let rows = document.querySelectorAll("#adminTable tr");
+
+        rows.forEach(row => {
+            let text = row.textContent.toLowerCase();
+            row.style.display = text.includes(filter) ? "" : "none";
+        });
+    });
+</script>
+
+<%- include('../footer') %>

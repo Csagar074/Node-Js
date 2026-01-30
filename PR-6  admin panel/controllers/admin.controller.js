@@ -156,8 +156,13 @@ module.exports.verifyEmail = async (req, res) => {
 // ----------------------------------
 // OTP PAGE
 // ----------------------------------
-module.exports.OTPPage = (req, res) => {
+module.exports.OTPPage = async (req, res) => {
     try {
+        const admin = await Admin.findById(req.cookies.adminId);
+
+        if (req.cookies.adminId && admin) {
+            return res.redirect('/dashbordPage');
+        }
         return res.render('auth/OTPPage');
     } catch (err) {
         console.log("OTP Page Error:", err);
@@ -168,8 +173,10 @@ module.exports.OTPPage = (req, res) => {
 // ----------------------------------
 // OTP VERIFY
 // ----------------------------------
-module.exports.OTPVerify = async (req, res) => {
+module.exports.OTPVerify =  (req, res) => {
     try {
+        console.log(req.body);
+        console.log(req.cookies);
         if (String(req.body.adminOTP) !== String(req.cookies.OTP)) {
             console.log("OTP not matched...");
             return res.redirect('/otp-page');

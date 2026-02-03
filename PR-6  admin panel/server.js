@@ -13,17 +13,17 @@ app.set('view engine', 'ejs');
 // ================= MIDDLEWARE ================= 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
- 
+
 // Static folders 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
- 
+
 // Cookies  
-app.use(cookieParser()); 
+app.use(cookieParser());
 
 // ================= ROUTES =================
 app.use('/', require('./routes/admin.route'));
- 
+
 // ================= SERVER =================
 app.listen(PORT, (err) => {
     if (err) {
@@ -31,5 +31,4 @@ app.listen(PORT, (err) => {
         return;
     }
     console.log('Server is Started.....');
-});  
-  
+});

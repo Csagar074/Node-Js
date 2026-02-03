@@ -74,7 +74,7 @@ module.exports.changePassword = async (req, res) => {
             return res.redirect('/');
         }
 
-        const { current_psw, new_psw, conform_psw } = req.body;
+        const { current_psw, new_psw, confirm_psw } = req.body;
 
         if (current_psw !== admin.password) {
             console.log("Current password not matched...");
@@ -86,7 +86,7 @@ module.exports.changePassword = async (req, res) => {
             return res.redirect('/change-password');
         }
 
-        if (new_psw !== conform_psw) {
+        if (new_psw !== confirm_psw) {
             console.log("Confirm password not matched...");
             return res.redirect('/change-password');
         }
@@ -173,7 +173,7 @@ module.exports.OTPPage = async (req, res) => {
 // ----------------------------------
 // OTP VERIFY
 // ----------------------------------
-module.exports.OTPVerify =  (req, res) => {
+module.exports.OTPVerify = (req, res) => {
     try {
         console.log(req.body);
         console.log(req.cookies);

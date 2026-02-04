@@ -1,0 +1,232 @@
+<%- include('../header') %>
+
+<style>
+    /* Premium Gradient Background matching your image */
+    .page-wrapper {
+        background: linear-gradient(135deg, #2e1a47 0%, #7a1b5d 50%, #c31432 100%) !important;
+        min-height: 100vh;
+        padding-bottom: 50px;
+    }
+
+    /* Glassmorphism Card Style */
+    .card {
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 25px !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+        overflow: hidden;
+    }
+
+    .page-title {
+        color: #ffffff !important;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .card-title {
+        font-weight: 700;
+        color: #ffffff !important;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+    }
+
+    /* Modern Input Fields */
+    .form-control, .custom-select {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 12px !important;
+        color: white !important;
+        padding: 12px 20px !important;
+        transition: all 0.3s ease;
+    }
+
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: #ff416c !important;
+        box-shadow: 0 0 15px rgba(255, 65, 108, 0.3) !important;
+    }
+
+    .control-label {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-weight: 500 !important;
+    }
+
+    /* Custom Radio & Checkbox Styling */
+    .custom-control-label {
+        color: white !important;
+        cursor: pointer;
+    }
+
+    .custom-control-input:checked~.custom-control-label::before {
+        background-color: #ff416c !important;
+        border-color: #ff416c !important;
+    }
+
+    /* Gradient Submit Button like the 'Login' button in image */
+    .submit-btn {
+        background: linear-gradient(45deg, #ff416c, #ff4b2b) !important;
+        border: none;
+        border-radius: 15px;
+        padding: 15px 40px;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 20px rgba(255, 65, 108, 0.4);
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 15px 25px rgba(255, 65, 108, 0.6);
+        filter: brightness(1.1);
+    }
+
+    /* Breadcrumb styling */
+    .breadcrumb-item a { color: rgba(255,255,255,0.7); }
+    .breadcrumb-item.active { color: white; }
+    .breadcrumb { background: transparent; }
+
+    .form-section {
+        background: transparent !important;
+        padding: 30px;
+    }
+
+    /* Select2 dropdown color fix */
+    option { background: #4e1a47; color: white; }
+</style>
+
+<div class="page-wrapper">
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Add Admin</h4>
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create Admin</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="card">
+                    <form class="form-horizontal" method="post" action="/insertAdmin" enctype="multipart/form-data">
+                        <div class="card-body form-section">
+                            <h4 class="card-title text-center">✨ Personal Details</h4>
+                            <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px;">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">First Name</label>
+                                        <input type="text" class="form-control" name="fname" placeholder="John">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Last Name</label>
+                                        <input type="text" class="form-control" name="lname" placeholder="Doe">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Email Address</label>
+                                        <input type="email" class="form-control" name="email" placeholder="admin@example.com">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Password</label>
+                                        <input type="password" class="form-control" name="password" placeholder="••••••••">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Contact Number</label>
+                                        <input type="text" class="form-control" name="phone" placeholder="+91 00000 00000">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">City</label>
+                                        <select class="form-control custom-select" name="city">
+                                            <option value="">Select City</option>
+                                            <option value="Surat">Surat</option>
+                                            <option value="Baroda">Baroda</option>
+                                            <option value="Navsari">Navsari</option>
+                                            <option value="Rajkot">Rajkot</option>
+                                            <option value="Mumbai">Mumbai</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="control-label d-block">Gender</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="Male" id="male" name="gender" required>
+                                        <label class="custom-control-label" for="male">Male</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" value="Female" id="female" name="gender" required>
+                                        <label class="custom-control-label" for="female">Female</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label d-block">Hobbies</label>
+                                    <% ["Cricket", "Yoga", "Reading"].map((Hobby, index)=> { %>
+                                        <div class="custom-control custom-checkbox custom-control-inline">
+                                            <input type="checkbox" name="Hobby[]" value="<%= Hobby %>" class="custom-control-input" id="hobby<%= index %>">
+                                            <label class="custom-control-label" for="hobby<%= index %>"><%= Hobby %></label>
+                                        </div>
+                                    <% }) %>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-4">
+                                <label class="control-label">About Admin</label>
+                                <textarea class="form-control" name="about" rows="3" placeholder="Brief biography..."></textarea>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label class="control-label">Profile Image</label>
+                                <input type="file" name="profile_image" class="form-control" style="height: auto;">
+                            </div>
+                        </div>
+
+                        <div class="text-center pb-5">
+                            <button type="submit" class="submit-btn">
+                                🚀 Create Admin Account
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../footer') %>

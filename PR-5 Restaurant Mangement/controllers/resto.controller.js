@@ -50,6 +50,8 @@ const deletecustomer = async (req, res) => {
         console.log("Error In Deleting Customer", error);
     }
 }
+
+// edit page 
 const editcustomer = async (req, res) => {
     console.log(req.body);
 

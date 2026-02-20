@@ -1,0 +1,135 @@
+<%- include('../header') %>
+
+<style>
+    .page-wrapper {
+        background: linear-gradient(135deg, #2e1a47 0%, #7a1b5d 50%, #c31432 100%) !important;
+        min-height: 100vh;
+        padding-bottom: 50px;
+    }
+    .card {
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(15px);
+        border-radius: 25px !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+    }
+    .form-control, .custom-select {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 12px !important;
+        color: white !important;
+        padding: 12px 20px !important;
+    }
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: #ff416c !important;
+        box-shadow: 0 0 15px rgba(255, 65, 108, 0.3) !important;
+    }
+    .control-label { color: rgba(255, 255, 255, 0.9) !important; font-weight: 500 !important; }
+    .submit-btn {
+        background: linear-gradient(45deg, #ff416c, #ff4b2b) !important;
+        border: none;
+        border-radius: 15px;
+        padding: 15px 40px;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+    }
+    option { background: #4e1a47; color: white; }
+</style>
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="card">
+                    <form action="/product/editProduct/<%= productData._id %>" method="post" enctype="multipart/form-data">
+                        <div class="card-body p-5">
+                            <h4 class="text-center mb-4" style="color: white;">✨ Edit Product</h4>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Title</label>
+                                    <input type="text" class="form-control" name="product_name" value="<%= productData.product_name %>">
+                                </div>
+                            </div>
+                           
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="control-label">Category</label>
+                                    <select class="form-control" name="category_id">
+                                        <% allCategory.forEach((cat)=> { %>
+                                            <option value="<%= cat._id %>" <%= (productData.category_id && cat._id == productData.category_id._id) ? 'selected' : '' %>>
+                                                <%= cat.category_name %>
+                                            </option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="control-label">Sub Category</label>
+                                    <select class="form-control" name="subcategory_id">
+                                        <% allSubCategory.forEach((sub)=> { %>
+                                            <option value="<%= sub._id %>" <%= (productData.subcategory_id && sub._id == productData.subcategory_id._id) ? 'selected' : '' %>>
+                                                <%= sub.subcategory_name %>
+                                            </option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="control-label">Extra Category</label>
+                                    <select class="form-control" name="extraCategory_id">
+                                        <% allExtraCategory.forEach((extra)=> { %>
+                                            <option value="<%= extra._id %>" <%= (productData.extraCategory_id && extra._id == productData.extraCategory_id._id) ? 'selected' : '' %>>
+                                                <%= extra.extracategory_name %>
+                                            </option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Old Price</label>
+                                        <input type="number" class="form-control" name="old_price" value="<%= productData.old_price %>">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Price</label>
+                                        <input type="number" class="form-control" name="new_price" value="<%= productData.new_price %>">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Stock</label>
+                                        <input type="number" class="form-control" name="stock" value="<%= productData.stock %>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label class="control-label">Description</label>
+                                <textarea class="form-control" name="description" rows="3"><%= productData.description %></textarea>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label class="control-label">Product Image</label>
+                                <% if(productData.product_img) { %>
+                                    <img src="/<%= productData.product_img %>" width="100" height="100" style="display: block; margin-bottom: 10px;">
+                                <% } %>
+                                <input type="file" name="product_img" class="form-control" style="height: auto;">
+                            </div>
+                        </div>
+
+                        <div class="text-center pb-5">
+                            <button type="submit" class="submit-btn">🚀 Update Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../footer') %>

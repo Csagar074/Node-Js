@@ -13,7 +13,7 @@ const { setFlash } = require('./middleware/connectFlash.middleware');
 require('./middleware/passport.local.middleware'); 
    
 const app = express();     
-     
+      
 const PORT = 8001;     
 app.set('view engine', 'ejs');  
 app.use(express.urlencoded({ extended: true }));
@@ -21,31 +21,31 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
   
 app.use(cookieparser()); 
-     
-app.use(session({       
-    name: "adminSession",     
+      
+app.use(session({         
+    name: "adminSession",        
     secret: "AdminPanel#@963", 
-    resave: true,    
-    saveUninitialized: false,  
+    resave: true,      
+    saveUninitialized: false, 
     cookie: {  
-        maxAge: 1000 * 60 * 60 * 24
+        maxAge: 1000 * 60 * 60 * 24 
     } 
 }));       
 app.use(flash());  
       
-app.use(passport.initialize());   
-app.use(passport.session());     
+app.use(passport.initialize());     
+app.use(passport.session());        
 app.use(passport.currentAdmin); 
 app.use(setFlash);      
   
 app.use('/',require('./routes/admin.route'));  
-app.use('/', require('./routes/index'));    
-  
+app.use('/', require('./routes/index'));     
+   
 app.listen(PORT, (err) => {  
     if (err) {
         console.log("Server is Not started...", err); 
         return false;    
     } 
-    console.log("Server is started....."); 
-});    
-                      
+    console.log("Server is started.....");  
+});       
+                       

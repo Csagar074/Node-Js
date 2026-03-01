@@ -9,11 +9,10 @@ const passport = require('passport');
 
 require('./middleware/passport.local.middleware');
 
-const app = express();
-
-const PORT = 8001;
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: true }));
+const app = express(); 
+const PORT = 8001;    
+app.set('view engine', 'ejs'); 
+app.use(express.urlencoded({ extended: true }));  
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

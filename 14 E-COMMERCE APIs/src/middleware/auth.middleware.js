@@ -1,30 +1,37 @@
 
-const JWT = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 const status = require('http-status-codes');
-const { MSG } = require("../utils/msg");
-const { errorResponse } = require("../utils/response");
+const { errorResponse } = require('../utils/response');
+const { MSG } = require('../utils/msg');
 const AdminAuthService = require('../services/auth/admin/admin.service');
 
 const adminAuthService = new AdminAuthService();
 
 module.exports.authMiddleware = async (req, res, next) => {
+
     let token = req.headers.authorization;
+
+    if (!token) {
+        return res.status(status.BAD_REQUEST).json(errorResponse(status.BAD_REQUEST, true, MSG.TOKEN_MISSING));
+    }
 
     token = token.slice(7, token.length);
 
-    if (!token) {
-        return res.status(status.BAD_REQUEST).json(errorResponse(status.BAD_REQUEST, true, MSG.Token_Not_Provided));
-    }
     try {
-        const decoded = JWT.verify(token, process.env.JWT_SECRET_KEY);
-        const admin = await adminAuthService.FetchSingleAdmin({ id: decoded.adminId });
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+        console.log(decoded.adminId);
+
+        const admin = await adminAuthService.fetchSingleAdmin({ _id: decoded.adminId });
+
         if (admin) {
             next();
+        } else {
+            return res.status(status.BAD_REQUEST).json(errorResponse(status.BAD_REQUEST, true, MSG.TOKEN_INVALID));
         }
-        else {
-            return res.status(status.BAD_REQUEST).json(errorResponse(status.BAD_REQUEST, true, MSG.Admin_Not_Found));
-        }
-    } catch (error) {
-        return res.status(status.BAD_REQUEST).json(errorResponse(status.BAD_REQUEST, true, MSG.Token_Invalid));
+    } catch (err) {
+        console.log(err);
+        return res.status(status.BAD_REQUEST).json(errorResponse(status.BAD_REQUEST, true, MSG.TOKEN_INVALID));
     }
+
 }

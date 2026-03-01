@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 
-const adminschema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     first_name: {
         type: String,
         required: true
@@ -15,16 +15,23 @@ const adminschema = mongoose.Schema({
         required: true,
         unique: true
     },
-
     password: {
         type: String,
-        required: true
+        required: true,
     },
     phone: {
-        type: Number,
-        required: true
+        type: String,
+        required: true,
     },
-   OTP: {
+    gender: {
+        type: String,
+        required: true,
+    },
+    address: {
+        type: String,
+        default: ""
+    },
+    OTP: {
         type: Number,
         default: 0,
     },
@@ -49,23 +56,21 @@ const adminschema = mongoose.Schema({
         default: null
     },
     isActive: {
-
         type: Boolean,
-        default: true
+        default: true,
     },
     isDelete: {
         type: Boolean,
-        default: false
+        default: false,
     },
-     create_at: {
+    create_at: {
         type: String,
         required: true
     },
     update_at: {
-
         type: String,
         required: true
-
     }
 });
-module.exports = mongoose.model('Admin', adminschema, 'Admin');
+
+module.exports = mongoose.model("User", userSchema, "User");

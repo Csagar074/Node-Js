@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OTP Verification</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <!-- SweetAlert2 -->
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.18/dist/sweetalert2.min.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1d2671, #c33764);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    .auth-box {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      color: #fff;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 80px;
+    }
+
+    h4 {
+      text-align: center;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 24px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
+      padding: 0 10px;
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      height: 55px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 22px;
+      letter-spacing: 6px;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: normal;
+      font-size: 15px;
+    }
+
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: none;
+      color: #fff;
+      outline: none;
+    }
+
+    .btn-main {
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+      border: none;
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-main:active {
+      transform: translateY(0);
+    }
+
+    .link-btn {
+      color: #ffd6e8;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    .link-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .auth-box {
+        padding: 25px 15px;
+        border-radius: 15px;
+      }
+
+      .logo img {
+        width: 70px;
+      }
+
+      h4 {
+        font-size: 20px;
+      }
+
+      .subtitle {
+        font-size: 12px;
+      }
+
+      .form-control {
+        height: 50px;
+        font-size: 20px;
+        letter-spacing: 5px;
+      }
+
+      .btn-main {
+        height: 45px;
+        font-size: 15px;
+      }
+    }
+
+    /* Remove number input arrows */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="auth-box">
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/3143/3143642.png" alt="otp">
+    </div>
+
+    <h4>Verify OTP</h4>
+    <p class="subtitle">Enter the 6-digit code sent to your email</p>
+
+    <form method="post" action="/otp-verify">
+      <div class="form-group">
+        <input type="number" 
+               class="form-control" 
+               name="adminOTP"
+               placeholder="000000" 
+               required 
+               maxlength="6"
+               oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+      </div>
+
+      <button type="submit" class="btn-main">Verify OTP</button>
+
+      <div class="text-center">
+        <span class="link-btn">Didn't receive code? Resend</span>
+      </div>
+    </form>
+  </div>
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.18/dist/sweetalert2.all.min.js"></script>
+
+  <script>
+    <% if (locals.flash.success && locals.flash.success.length > 0) { %>
+      Swal.fire({
+        title: "Success !",
+        text: "<%= locals.flash.success %>",
+        icon: "success"
+      });
+    <% } %>
+    <% if (locals.flash.error && locals.flash.error.length > 0) { %>
+      Swal.fire({
+        title: "Error !",
+        text: "<%= locals.flash.error %>",
+        icon: "error"
+      });
+    <% } %>
+  </script>
+
+</body>
+</html>

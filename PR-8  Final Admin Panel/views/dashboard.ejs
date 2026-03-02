@@ -1,0 +1,1085 @@
+<%- include('header')%>
+
+    <div class="page-wrapper" style="background-color: #0d0d1a;">
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid" style="background-color: #0d0d1a;">
+            <!-- ============================================================== -->
+            <!-- Sales Cards  -->
+            <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            <!-- ------------------------------------------------------------------------------------------------- -->
+
+
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Epilogue:wght@300;400;500&display=swap');
+
+                :root {
+                    --c-bg: #050810;
+                    --c-surface: #0c1120;
+                    --c-card: #101828;
+                    --c-border: rgba(255, 255, 255, 0.07);
+                    --c-border2: rgba(255, 255, 255, 0.13);
+                    --c-text: #e2e8f5;
+                    --c-muted: #5a6a8a;
+                    --c-dim: #2a3450;
+                    --c-blue: #2563ff;
+                    --c-blue-g: rgba(37, 99, 255, 0.18);
+                    --c-teal: #00d4aa;
+                    --c-teal-g: rgba(0, 212, 170, 0.13);
+                    --c-violet: #9333ea;
+                    --c-violet-g: rgba(147, 51, 234, 0.15);
+                    --c-amber: #f59e0b;
+                    --c-amber-g: rgba(245, 158, 11, 0.13);
+                    --c-rose: #fb7185;
+                    --c-rose-g: rgba(251, 113, 133, 0.13);
+                }
+
+                .dv-wrapper {
+                    font-family: 'Epilogue', sans-serif;
+                    background: #1a1a2e;
+                    min-height: 100vh;
+                    padding: 10px 32px 60px;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                /* ambient glow orbs behind everything */
+                .dv-wrapper::before,
+                .dv-wrapper::after {
+                    content: '';
+                    position: fixed;
+                    border-radius: 50%;
+                    filter: blur(110px);
+                    pointer-events: none;
+                    z-index: 0;
+                }
+
+                .dv-wrapper::before {
+                    width: 520px;
+                    height: 520px;
+                    top: -160px;
+                    left: -120px;
+                    background: radial-gradient(circle, rgba(37, 99, 255, 0.1) 0%, transparent 70%);
+                }
+
+                .dv-wrapper::after {
+                    width: 420px;
+                    height: 420px;
+                    bottom: -100px;
+                    right: -80px;
+                    background: radial-gradient(circle, rgba(147, 51, 234, 0.09) 0%, transparent 70%);
+                }
+
+                .dv-inner {
+                    position: relative;
+                    z-index: 1;
+                    max-width: 1280px;
+                    margin: 0 auto;
+                }
+
+                /* ── PAGE TITLE ── */
+                .dv-page-title {
+                    font-family: 'Syne', sans-serif;
+                    font-size: 28px;
+                    font-weight: 800;
+                    color: var(--c-text);
+                    letter-spacing: -0.8px;
+                    margin-bottom: 28px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .dv-page-title .title-dot {
+                    width: 8px;
+                    height: 8px;
+                    background: var(--c-blue);
+                    border-radius: 50%;
+                    box-shadow: 0 0 12px var(--c-blue);
+                    display: inline-block;
+                }
+
+                /* ── WELCOME BANNER ── */
+                .dv-welcome {
+                    position: relative;
+                    border-radius: 20px;
+                    padding: 36px 40px;
+                    margin-bottom: 32px;
+                    overflow: hidden;
+                    background: var(--c-card);
+                    border: 1px solid var(--c-border2);
+                }
+
+                .dv-welcome-noise {
+                    position: absolute;
+                    inset: 0;
+                    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+                    pointer-events: none;
+                }
+
+                .dv-welcome-glow {
+                    position: absolute;
+                    top: -60px;
+                    right: -40px;
+                    width: 320px;
+                    height: 320px;
+                    background: radial-gradient(circle, rgba(37, 99, 255, 0.15) 0%, transparent 65%);
+                    pointer-events: none;
+                }
+
+                .dv-welcome-glow2 {
+                    position: absolute;
+                    bottom: -40px;
+                    left: 30%;
+                    width: 240px;
+                    height: 240px;
+                    background: radial-gradient(circle, rgba(0, 212, 170, 0.08) 0%, transparent 65%);
+                    pointer-events: none;
+                }
+
+                .dv-welcome-content {
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .dv-welcome-eyebrow {
+                    font-size: 11px;
+                    font-weight: 500;
+                    letter-spacing: 2.5px;
+                    text-transform: uppercase;
+                    color: var(--c-blue);
+                    margin-bottom: 10px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .dv-welcome-eyebrow::before {
+                    content: '';
+                    width: 24px;
+                    height: 1.5px;
+                    background: var(--c-blue);
+                    display: inline-block;
+                }
+
+                .dv-welcome h2 {
+                    font-family: 'Syne', sans-serif;
+                    font-size: 32px;
+                    font-weight: 800;
+                    color: var(--c-text);
+                    letter-spacing: -1px;
+                    line-height: 1.2;
+                    margin: 0 0 8px;
+                }
+
+                .dv-welcome h2 .name-highlight {
+                    background: linear-gradient(90deg, #60a5fa, var(--c-teal));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+
+                .dv-welcome p {
+                    font-size: 14px;
+                    color: var(--c-muted);
+                    margin: 0;
+                }
+
+                .dv-welcome-badge {
+                    position: absolute;
+                    right: 40px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: 10px;
+                }
+
+                .dv-pill {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    padding: 7px 14px;
+                    border-radius: 40px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    border: 1px solid;
+                }
+
+                .dv-pill-teal {
+                    background: var(--c-teal-g);
+                    color: var(--c-teal);
+                    border-color: rgba(0, 212, 170, 0.25);
+                }
+
+                .dv-pill-blue {
+                    background: var(--c-blue-g);
+                    color: #60a5ff;
+                    border-color: rgba(37, 99, 255, 0.3);
+                }
+
+                .dv-pill .pulse-dot {
+                    width: 6px;
+                    height: 6px;
+                    background: currentColor;
+                    border-radius: 50%;
+                    animation: pulse-ring 2s infinite;
+                }
+
+                @keyframes pulse-ring {
+
+                    0%,
+                    100% {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+
+                    50% {
+                        opacity: 0.5;
+                        transform: scale(1.4);
+                    }
+                }
+
+                /* ── STATS GRID ── */
+                .dv-stats-grid {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    gap: 16px;
+                    margin-bottom: 0;
+                }
+
+                /* card base */
+                .dv-stat {
+                    background: var(--c-card);
+                    border: 1px solid var(--c-border);
+                    border-radius: 18px;
+                    padding: 24px;
+                    position: relative;
+                    overflow: hidden;
+                    cursor: default;
+                    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        border-color 0.25s,
+                        box-shadow 0.25s;
+                    animation: stat-in 0.55s ease both;
+                }
+
+                @keyframes stat-in {
+                    from {
+                        opacity: 0;
+                        transform: translateY(24px) scale(0.96);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0) scale(1);
+                    }
+                }
+
+                .dv-stat:nth-child(1) {
+                    animation-delay: 0.06s;
+                }
+
+                .dv-stat:nth-child(2) {
+                    animation-delay: 0.12s;
+                }
+
+                .dv-stat:nth-child(3) {
+                    animation-delay: 0.18s;
+                }
+
+                .dv-stat:nth-child(4) {
+                    animation-delay: 0.24s;
+                }
+
+                .dv-stat:nth-child(5) {
+                    animation-delay: 0.30s;
+                }
+
+                .dv-stat:hover {
+                    transform: translateY(-6px) scale(1.01);
+                    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45);
+                }
+
+                /* color accents per card */
+                .dv-stat[data-accent="blue"] {
+                    --acc: var(--c-blue);
+                    --acc-g: var(--c-blue-g);
+                }
+
+                .dv-stat[data-accent="teal"] {
+                    --acc: var(--c-teal);
+                    --acc-g: var(--c-teal-g);
+                }
+
+                .dv-stat[data-accent="violet"] {
+                    --acc: var(--c-violet);
+                    --acc-g: var(--c-violet-g);
+                }
+
+                .dv-stat[data-accent="amber"] {
+                    --acc: var(--c-amber);
+                    --acc-g: var(--c-amber-g);
+                }
+
+                .dv-stat[data-accent="rose"] {
+                    --acc: var(--c-rose);
+                    --acc-g: var(--c-rose-g);
+                }
+
+                .dv-stat:hover {
+                    border-color: color-mix(in srgb, var(--acc) 40%, transparent);
+                }
+
+                /* top-right glow splash */
+                .dv-stat::before {
+                    content: '';
+                    position: absolute;
+                    top: -30px;
+                    right: -30px;
+                    width: 120px;
+                    height: 120px;
+                    background: radial-gradient(circle, var(--acc-g) 0%, transparent 70%);
+                    pointer-events: none;
+                    transition: opacity 0.25s;
+                    opacity: 0.7;
+                }
+
+                .dv-stat:hover::before {
+                    opacity: 1;
+                }
+
+                /* bottom decorative bar */
+                .dv-stat::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 2px;
+                    background: linear-gradient(90deg, transparent, var(--acc), transparent);
+                    opacity: 0;
+                    transition: opacity 0.25s;
+                }
+
+                .dv-stat:hover::after {
+                    opacity: 1;
+                }
+
+                .dv-stat-top {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    margin-bottom: 20px;
+                }
+
+                .dv-stat-icon {
+                    width: 42px;
+                    height: 42px;
+                    border-radius: 12px;
+                    background: var(--acc-g);
+                    border: 1px solid color-mix(in srgb, var(--acc) 30%, transparent);
+                    display: grid;
+                    place-items: center;
+                    font-size: 18px;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .dv-stat-trend {
+                    font-size: 11px;
+                    font-weight: 700;
+                    padding: 4px 9px;
+                    border-radius: 8px;
+                    background: var(--acc-g);
+                    color: var(--acc);
+                    letter-spacing: 0.3px;
+                }
+
+                .dv-stat-value {
+                    font-family: 'Syne', sans-serif;
+                    font-size: 38px;
+                    font-weight: 800;
+                    color: var(--c-text);
+                    letter-spacing: -2px;
+                    line-height: 1;
+                    margin-bottom: 6px;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .dv-stat-label {
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: var(--c-muted);
+                    letter-spacing: 0.3px;
+                    text-transform: uppercase;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                /* sparkline — pure CSS decorative line */
+                .dv-sparkline {
+                    margin-top: 16px;
+                    height: 32px;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .dv-sparkline svg {
+                    width: 100%;
+                    height: 100%;
+                    overflow: visible;
+                }
+
+                .dv-sparkline polyline {
+                    fill: none;
+                    stroke: var(--acc);
+                    stroke-width: 1.5;
+                    opacity: 0.5;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                }
+            </style>
+
+            <!-- ════════════════════════════════════ -->
+            <!--  PREMIUM STATS SECTION — EJS READY  -->
+            <!-- ════════════════════════════════════ -->
+            <div class="dv-wrapper">
+                <!-- <div class="dv-inner"> -->
+
+                <!-- Page Title -->
+                <div class="dv-page-title">
+                    <span class="title-dot"></span>
+                    Dashboard Overview
+                </div>
+
+                <!-- Welcome Banner -->
+                <div class="dv-welcome">
+                    <div class="dv-welcome-noise"></div>
+                    <div class="dv-welcome-glow"></div>
+                    <div class="dv-welcome-glow2"></div>
+                    <div class="dv-welcome-content">
+                        <div class="dv-welcome-eyebrow">Store Intelligence</div>
+                        <h2>Welcome back, <span class="name-highlight">
+                                <%= admin.fname %>!
+                            </span></h2>
+                        <p>Here's what's happening with your store today.</p>
+                    </div>
+                    <div class="dv-welcome-badge">
+                        <div class="dv-pill dv-pill-teal">
+                            <span class="pulse-dot"></span> All systems live
+                        </div>
+                        <div class="dv-pill dv-pill-blue">
+                            Today's report ready
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="dv-stats-grid">
+
+                    <!-- Admins -->
+                    <div class="dv-stat" data-accent="blue">
+                        <div class="dv-stat-top">
+                            <div class="dv-stat-icon">👥</div>
+                            <div class="dv-stat-trend">↑ 8%</div>
+                        </div>
+                        <div class="dv-stat-value">
+                            <%= totalAdmins || 0 %>
+                        </div>
+                        <div class="dv-stat-label">Total Admins</div>
+                        <div class="dv-sparkline">
+                            <svg viewBox="0 0 100 32" preserveAspectRatio="none">
+                                <polyline points="0,28 18,20 35,24 52,14 68,18 82,8 100,12" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="dv-stat" data-accent="teal">
+                        <div class="dv-stat-top">
+                            <div class="dv-stat-icon">📁</div>
+                            <div class="dv-stat-trend">↑ 4%</div>
+                        </div>
+                        <div class="dv-stat-value">
+                            <%= totalCategories || 0 %>
+                        </div>
+                        <div class="dv-stat-label">Categories</div>
+                        <div class="dv-sparkline">
+                            <svg viewBox="0 0 100 32" preserveAspectRatio="none">
+                                <polyline points="0,24 20,18 40,22 60,12 80,16 100,8" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Sub Categories -->
+                    <div class="dv-stat" data-accent="violet">
+                        <div class="dv-stat-top">
+                            <div class="dv-stat-icon">📂</div>
+                            <div class="dv-stat-trend">↑ 3%</div>
+                        </div>
+                        <div class="dv-stat-value">
+                            <%= totalSubCategories || 0 %>
+                        </div>
+                        <div class="dv-stat-label">Sub Categories</div>
+                        <div class="dv-sparkline">
+                            <svg viewBox="0 0 100 32" preserveAspectRatio="none">
+                                <polyline points="0,20 15,26 30,16 50,20 70,10 90,14 100,6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Extra Categories -->
+                    <div class="dv-stat" data-accent="amber">
+                        <div class="dv-stat-top">
+                            <div class="dv-stat-icon">⭐</div>
+                            <div class="dv-stat-trend">↑ 12%</div>
+                        </div>
+                        <div class="dv-stat-value">
+                            <%= totalExtraCategories || 0 %>
+                        </div>
+                        <div class="dv-stat-label">Extra Categories</div>
+                        <div class="dv-sparkline">
+                            <svg viewBox="0 0 100 32" preserveAspectRatio="none">
+                                <polyline points="0,26 20,22 38,28 55,14 72,18 88,6 100,10" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Products -->
+                    <div class="dv-stat" data-accent="rose">
+                        <div class="dv-stat-top">
+                            <div class="dv-stat-icon">📦</div>
+                            <div class="dv-stat-trend">↑ 5%</div>
+                        </div>
+                        <div class="dv-stat-value">
+                            <%= totalProducts || 0 %>
+                        </div>
+                        <div class="dv-stat-label">Total Products</div>
+                        <div class="dv-sparkline">
+                            <svg viewBox="0 0 100 32" preserveAspectRatio="none">
+                                <polyline points="0,22 16,28 32,18 48,24 64,12 80,16 100,4" />
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- ---------------------------------------------------------------------------------------------------- -->
+
+
+        <!-- ============================================================== -->
+        <!-- Sales chart -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Recent comment and chats -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-lg-12">
+                <div class="card" style="background-color: #1a1a2e; color: white;">
+                    <div class="card-body">
+                        <h4 class="card-title">Latest Posts</h4>
+                    </div>
+                    <div class="comment-widgets scrollable">
+                        <!-- Comment Row -->
+                        <div class="d-flex flex-row comment-row m-t-0">
+                            <div class="p-2"><img src="assets/images/users/1.jpg" alt="user" width="50"
+                                    class="rounded-circle"></div>
+                            <div class="comment-text w-100">
+                                <h6 class="font-medium">James Anderson</h6>
+                                <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and
+                                    type
+                                    setting industry. </span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-right">April 14, 2016</span>
+                                    <button type="button" class="btn btn-cyan btn-sm">Edit</button>
+                                    <button type="button" class="btn btn-success btn-sm">Publish</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Comment Row -->
+                        <div class="d-flex flex-row comment-row">
+                            <div class="p-2"><img src="assets/images/users/4.jpg" alt="user" width="50"
+                                    class="rounded-circle"></div>
+                            <div class="comment-text active w-100">
+                                <h6 class="font-medium">Michael Jorden</h6>
+                                <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and
+                                    type
+                                    setting industry. </span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-right">May 10, 2016</span>
+                                    <button type="button" class="btn btn-cyan btn-sm">Edit</button>
+                                    <button type="button" class="btn btn-success btn-sm">Publish</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Comment Row -->
+                        <div class="d-flex flex-row comment-row">
+                            <div class="p-2"><img src="assets/images/users/5.jpg" alt="user" width="50"
+                                    class="rounded-circle"></div>
+                            <div class="comment-text w-100">
+                                <h6 class="font-medium">Johnathan Doeting</h6>
+                                <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and
+                                    type
+                                    setting industry. </span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-right">August 1, 2016</span>
+                                    <button type="button" class="btn btn-cyan btn-sm">Edit</button>
+                                    <button type="button" class="btn btn-success btn-sm">Publish</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Below Latest Posts -->
+        <div class="row" style="margin-top: 20px;">
+            <!-- To Do List -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100" style="background-color: #0c1120; color: white; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div class="card-body">
+                        <h4 class="card-title" style="color: white;">To Do List</h4>
+                        <div class="todo-widget scrollable" style="height:450px;">
+                            <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
+                                <li class="list-group-item todo-item" data-role="task" style="background-color: #101828; border-color: rgba(255, 255, 255, 0.1); color: white;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                                        <label class="custom-control-label todo-label" for="customCheck" style="color: white;">
+                                            <span class="todo-desc" style="color: rgba(255, 255, 255, 0.9);">Lorem Ipsum is simply dummy text of the printing
+                                                and
+                                                typesetting industry.</span> <span
+                                                class="badge badge-pill badge-danger float-right">Today</span>
+                                        </label>
+                                    </div>
+                                    <ul class="list-style-none assignedto">
+                                        <li class="assignee"><img class="rounded-circle" width="40"
+                                                src="assets/images/users/1.jpg" alt="user" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Steave"></li>
+                                        <li class="assignee"><img class="rounded-circle" width="40"
+                                                src="assets/images/users/2.jpg" alt="user" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Jessica"></li>
+                                        <li class="assignee"><img class="rounded-circle" width="40"
+                                                src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Priyanka"></li>
+                                        <li class="assignee"><img class="rounded-circle" width="40"
+                                                src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Selina"></li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item todo-item" data-role="task" style="background-color: #101828; border-color: rgba(255, 255, 255, 0.1); color: white;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label todo-label" for="customCheck1" style="color: white;">
+                                            <span class="todo-desc" style="color: rgba(255, 255, 255, 0.9);">Lorem Ipsum is simply dummy text of the
+                                                printing</span><span
+                                                class="badge badge-pill badge-primary float-right">1 week </span>
+                                        </label>
+                                    </div>
+                                    <div class="item-date" style="color: rgba(255, 255, 255, 0.6);"> 26 jun 2017</div>
+                                </li>
+                                <li class="list-group-item todo-item" data-role="task" style="background-color: #101828; border-color: rgba(255, 255, 255, 0.1); color: white;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                        <label class="custom-control-label todo-label" for="customCheck2" style="color: white;">
+                                            <span class="todo-desc" style="color: rgba(255, 255, 255, 0.9);">Give Purchase report to</span> <span
+                                                class="badge badge-pill badge-info float-right">Yesterday</span>
+                                        </label>
+                                    </div>
+                                    <ul class="list-style-none assignedto">
+                                        <li class="assignee"><img class="rounded-circle" width="40"
+                                                src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Priyanka"></li>
+                                        <li class="assignee"><img class="rounded-circle" width="40"
+                                                src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Selina"></li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item todo-item" data-role="task" style="background-color: #101828; border-color: rgba(255, 255, 255, 0.1); color: white;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label todo-label" for="customCheck3" style="color: white;">
+                                            <span class="todo-desc" style="color: rgba(255, 255, 255, 0.9);">Lorem Ipsum is simply dummy text of the printing
+                                            </span> <span class="badge badge-pill badge-warning float-right">2
+                                                weeks</span>
+                                        </label>
+                                    </div>
+                                    <div class="item-date" style="color: rgba(255, 255, 255, 0.6);"> 26 jun 2017</div>
+                                </li>
+                                <li class="list-group-item todo-item" data-role="task" style="background-color: #101828; border-color: rgba(255, 255, 255, 0.1); color: white;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                        <label class="custom-control-label todo-label" for="customCheck4" style="color: white;">
+                                            <span class="todo-desc" style="color: rgba(255, 255, 255, 0.9);">Give Purchase report to</span> <span
+                                                class="badge badge-pill badge-info float-right">Yesterday</span>
+                                        </label>
+                                    </div>
+                                    <ul class="list-style-none assignedto">
+                                        <li class="assignee"><img class="rounded-circle" width="40"
+                                                src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Priyanka"></li>
+                                        <li class="assignee"><img class="rounded-circle" width="40"
+                                                src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Selina"></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Box -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100" style="background-color: #1a1a2e; color: white;">
+                    <div class="card-body">
+                        <h4 class="card-title m-b-0">Progress Box</h4>
+                        <div class="m-t-20">
+                            <div class="d-flex no-block align-items-center">
+                                <span>81% Clicks</span>
+                                <div class="ml-auto">
+                                    <span>125</span>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 81%"
+                                    aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex no-block align-items-center m-t-25">
+                                <span>72% Uniquie Clicks</span>
+                                <div class="ml-auto">
+                                    <span>120</span>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                    style="width: 72%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex no-block align-items-center m-t-25">
+                                <span>53% Impressions</span>
+                                <div class="ml-auto">
+                                    <span>785</span>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
+                                    style="width: 53%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex no-block align-items-center m-t-25">
+                                <span>3% Online Users</span>
+                                <div class="ml-auto">
+                                    <span>8</span>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar"
+                                    style="width: 3%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Option -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100" style="background-color: #1a1a2e; color: white;">
+                    <div class="card-body">
+                        <h4 class="card-title">Chat Option</h4>
+                        <div class="chat-box scrollable" style="height:475px;">
+                            <!--chat Row -->
+                            <ul class="chat-list">
+                                <!--chat Row -->
+                                <li class="chat-item">
+                                    <div class="chat-img"><img src="assets/images/users/1.jpg" alt="user"></div>
+                                    <div class="chat-content">
+                                        <h6 class="font-medium">James Anderson</h6>
+                                        <div class="box bg-light-info">Lorem Ipsum is simply dummy text of the
+                                            printing
+                                            &amp; type setting industry.</div>
+                                    </div>
+                                    <div class="chat-time">10:56 am</div>
+                                </li>
+                                <!--chat Row -->
+                                <li class="chat-item">
+                                    <div class="chat-img"><img src="assets/images/users/2.jpg" alt="user"></div>
+                                    <div class="chat-content">
+                                        <h6 class="font-medium">Bianca Doe</h6>
+                                        <div class="box bg-light-info">It’s Great opportunity to work.</div>
+                                    </div>
+                                    <div class="chat-time">10:57 am</div>
+                                </li>
+                                <!--chat Row -->
+                                <li class="odd chat-item">
+                                    <div class="chat-content">
+                                        <div class="box bg-light-inverse">I would love to join the team.</div>
+                                        <br>
+                                    </div>
+                                </li>
+                                <!--chat Row -->
+                                <li class="odd chat-item">
+                                    <div class="chat-content">
+                                        <div class="box bg-light-inverse">Whats budget of the new project.</div>
+                                        <br>
+                                    </div>
+                                    <div class="chat-time">10:59 am</div>
+                                </li>
+                                <!--chat Row -->
+                                <li class="chat-item">
+                                    <div class="chat-img"><img src="assets/images/users/3.jpg" alt="user"></div>
+                                    <div class="chat-content">
+                                        <h6 class="font-medium">Angelina Rhodes</h6>
+                                        <div class="box bg-light-info">Well we have good budget for the project
+                                        </div>
+                                    </div>
+                                    <div class="chat-time">11:00 am</div>
+                                </li>
+                                <!--chat Row -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body border-top">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="input-field m-t-0 m-b-0">
+                                    <textarea id="textarea1" placeholder="Type and enter"
+                                        class="form-control border-0"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <a class="btn-circle btn-lg btn-cyan float-right text-white"
+                                    href="javascript:void(0)"><i class="fas fa-paper-plane"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Row of Cards -->
+        <div class="row" style="margin-top: 20px;">
+            <!-- Our Partner -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100" style="background-color: #1a1a2e; color: white;">
+                    <div class="card-body">
+                        <h4 class="card-title">Our partner (Box with Fix height)</h4>
+                    </div>
+                    <div class="comment-widgets scrollable" style="max-height: 130px;">
+                        <!-- Comment Row -->
+                        <div class="d-flex flex-row comment-row m-t-0">
+                            <div class="p-2"><img src="assets/images/users/1.jpg" alt="user" width="50"
+                                    class="rounded-circle"></div>
+                            <div class="comment-text w-100">
+                                <h6 class="font-medium">James Anderson</h6>
+                                <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and
+                                    type
+                                    setting industry. </span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-right">April 14, 2016</span>
+                                    <button type="button" class="btn btn-cyan btn-sm">Edit</button>
+                                    <button type="button" class="btn btn-success btn-sm">Publish</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Comment Row -->
+                        <div class="d-flex flex-row comment-row">
+                            <div class="p-2"><img src="assets/images/users/4.jpg" alt="user" width="50"
+                                    class="rounded-circle"></div>
+                            <div class="comment-text active w-100">
+                                <h6 class="font-medium">Michael Jorden</h6>
+                                <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and
+                                    type
+                                    setting industry. </span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-right">May 10, 2016</span>
+                                    <button type="button" class="btn btn-cyan btn-sm">Edit</button>
+                                    <button type="button" class="btn btn-success btn-sm">Publish</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Comment Row -->
+                        <div class="d-flex flex-row comment-row">
+                            <div class="p-2"><img src="assets/images/users/5.jpg" alt="user" width="50"
+                                    class="rounded-circle"></div>
+                            <div class="comment-text w-100">
+                                <h6 class="font-medium">Johnathan Doeting</h6>
+                                <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and
+                                    type
+                                    setting industry. </span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-right">August 1, 2016</span>
+                                    <button type="button" class="btn btn-cyan btn-sm">Edit</button>
+                                    <button type="button" class="btn btn-success btn-sm">Publish</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion -->
+            <div class="col-lg-4 mb-4">
+                <div class="accordion" id="accordionExample" style="background-color: #1a1a2e; color: white;">
+                    <div class="card m-b-0" style="background-color: #1a1a2e; color: white;">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
+                                    <span>Accordion Example 1</span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                on it
+                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                                helvetica,
+                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                                excepteur
+                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic
+                                synth
+                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card m-b-0 border-top" style="background-color: #1a1a2e; color: white;">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
+                                    <span>Accordion Example 2</span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                on it
+                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                                helvetica,
+                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                                excepteur
+                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic
+                                synth
+                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card m-b-0 border-top" style="background-color: #1a1a2e; color: white;">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                    aria-expanded="false" aria-controls="collapseThree">
+                                    <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
+                                    <span>Accordion Example 3</span>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                on it
+                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                                helvetica,
+                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                                excepteur
+                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic
+                                synth
+                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toggle -->
+            <div class="col-lg-4 mb-4">
+                <div id="accordian-4">
+                    <div class="card m-t-30" style="background-color: #1a1a2e; color: white;">
+                        <a class="card-header link" data-toggle="collapse" data-parent="#accordian-4" href="#Toggle-1"
+                            aria-expanded="true" aria-controls="Toggle-1">
+                            <i class="seticon fa fa-arrow-right" aria-hidden="true"></i>
+                            <span>Toggle, Open by default</span>
+                        </a>
+                        <div id="Toggle-1" class="collapse show multi-collapse">
+                            <div class="card-body widget-content">
+                                This box is opened by default, paragraphs and is full of waffle to pad out the
+                                comment.
+                                Usually, you just wish these sorts of comments would come to an end.
+                            </div>
+                        </div>
+                        <a class="card-header link border-top" data-toggle="collapse" data-parent="#accordian-4"
+                            href="#Toggle-2" aria-expanded="false" aria-controls="Toggle-2">
+                            <i class="seticon fa fa-times" aria-hidden="true"></i>
+                            <span>Toggle, Closed by default</span>
+                        </a>
+                        <div id="Toggle-2" class="multi-collapse collapse">
+                            <div class="card-body widget-content">
+                                This box is now open
+                            </div>
+                        </div>
+                        <a class="card-header collapsed link border-top" data-toggle="collapse"
+                            data-parent="#accordian-4" href="#Toggle-3" aria-expanded="false" aria-controls="Toggle-3">
+                            <i class="seticon fa fa-times" aria-hidden="true"></i>
+                            <span>Toggle, Closed by default</span>
+                        </a>
+                        <div id="Toggle-3" class="collapse multi-collapse">
+                            <div class="card-body widget-content">
+                                This box is now open
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Recent comment and chats -->
+        <!-- ============================================================== -->
+    </div>
+    </div>
+    <%- include('footer')%>

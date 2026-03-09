@@ -1,6 +1,8 @@
 const extraCategory = require("../models/extraCategory.model");
 const Category = require("../models/category.model");
 const SubCategory = require("../models/subcategory.model");
+const Product = require("../models/product.model");
+const fs = require('fs');
 
 module.exports.addextraCategoryPage = async (req, res) => {
     try {
@@ -47,6 +49,18 @@ module.exports.deleteextraCategory = async (req, res) => {
     try {
         const deletedextraCategory = await extraCategory.findByIdAndDelete(req.query.extracategoryId);
         if (deletedextraCategory) {
+            const relatedProducts = await Product.find({ extraCategory_id: req.query.extracategoryId });
+            
+            relatedProducts.forEach(product => {
+                if (product.product_img) {
+                    fs.unlink(product.product_img, (err) => {
+                        if (err) console.log("File delete error:", err);
+                    });
+                }
+            });
+            
+            await Product.deleteMany({ extraCategory_id: req.query.extracategoryId });
+            
             req.flash('success', `Extra category deleted successfully`);
         } else {
             req.flash('error', `Deletion failed`);

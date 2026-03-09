@@ -11,10 +11,10 @@ const { setFlash } = require('./middleware/connectFlash.middleware');
    
  
 require('./middleware/passport.local.middleware'); 
-     
+      
 const app = express();                   
-                    
-const PORT = 8001;      
+                           
+const PORT = 8001;             
 app.set('view engine', 'ejs');  
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,7 +29,7 @@ app.use(session({
     saveUninitialized: false, 
     cookie: {  
         maxAge: 1000 * 60 * 60 * 24 
-    } 
+    }    
 }));       
 app.use(flash());  
       
@@ -48,4 +48,4 @@ app.listen(PORT, (err) => {
     }    
     console.log("Server is started.....");      
 });            
-                                                                                                               
+                                                                                                                 

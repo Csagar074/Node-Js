@@ -1,6 +1,9 @@
 
 const Category = require("../models/category.model");
 const SubCategory = require("../models/subcategory.model");
+const ExtraCategory = require("../models/extraCategory.model");
+const Product = require("../models/product.model");
+const fs = require('fs');
 
 module.exports.addSubCategoryPage = async (req, res) => {
     try {
@@ -55,6 +58,17 @@ module.exports.deletesubCategory = async (req, res) => {
         const deletedsubCategory = await SubCategory.findByIdAndDelete(req.query.subcategoryId);
 
         if (deletedsubCategory) {
+            const relatedProducts = await Product.find({ subcategory_id: req.query.subcategoryId });
+            
+            relatedProducts.forEach(product => {
+                if (product.product_img && fs.existsSync(product.product_img)) {
+                    fs.unlinkSync(product.product_img);
+                }
+            });
+            
+            await ExtraCategory.deleteMany({ subcategory_id: req.query.subcategoryId });
+            await Product.deleteMany({ subcategory_id: req.query.subcategoryId });
+            
             req.flash('success', `${deletedsubCategory.subcategory_name} Sub category is deleted`);
         } else {
             req.flash('error', `Sub category is deletion failed`);

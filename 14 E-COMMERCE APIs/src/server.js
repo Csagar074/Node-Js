@@ -9,17 +9,16 @@ require('./config/db.config');
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(express.json());
+app.use(express.json());  
 app.use(morgan('dev'));
+      
+app.use('/api', require('./routes/'));  
 
-app.use('/api', require('./routes/'));
-
-app.listen(PORT, (err) => {
+app.listen(PORT, (err) => {   
     if (err) {
         console.log("Server is not started..", err);
         return;
     }
 
     console.log("Server is started...");
-});
-  
+});         

@@ -10,8 +10,6 @@ userRoute.post('/forgot-password', forgotPassword);
 userRoute.post('/verify-otp', verifyOTP);
 userRoute.post('/new-password', newPassword);
 
-// localhost:8000/api/auth/user/register
-// localhost:8000/api/auth/user/login
 
 userRoute.get('/', fetchAllUser);
 userRoute.delete('/', deleteUser);
@@ -23,3 +21,4 @@ userRoute.get('/profile', userProfile);
 userRoute.post('/change-password', changePassword);
 
 module.exports = userRoute;
+ 
